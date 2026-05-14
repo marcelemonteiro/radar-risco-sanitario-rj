@@ -763,79 +763,89 @@ def render_marco_legal(df, ultimo_ano):
     st.markdown(f"""
     <div class="insight">
         <strong>Metodologia:</strong> Para cada município, é calculada a <strong>tendência linear</strong>
-        (regressão de 1º grau) com base nos dados dos últimos 10 anos (2014–{ultimo_ano}).
+        (regressão de 1º grau) com base nos dados dos últimos 10 anos (2014-{ultimo_ano}).
         A projeção indica qual seria o valor do indicador em {ANO_META} se a tendência atual se mantiver.
         Municípios em <strong style="color:#7c3aed">retrocesso</strong> apresentam tendência de queda.
     </div>
     """, unsafe_allow_html=True)
 
-    for indicador, meta, titulo in [
-        ("indice_atendimento_total_agua", META_AGUA, "Água - meta 99%"),
-        ("indice_coleta_esgoto", META_ESGOTO, "Esgoto - meta 90%"),
-    ]:
-        st.markdown(f"**{titulo}**")
-        df_h = df[df["ano"].between(2014, ultimo_ano)][["ano", "id_municipio", "nome_municipio", indicador]].dropna()
-        res = []
-        for mid, g in df_h.groupby("id_municipio"):
-            if len(g) < 3:
-                continue
-            nome = g["nome_municipio"].iloc[0]
-            coef = np.polyfit(g["ano"].values.astype(float), g[indicador].values, 1)
-            taxa = coef[0]
-            atual = float(np.polyval(coef, ultimo_ano))
-            proj = float(np.polyval(coef, ANO_META))
-            if atual >= meta:
-                status = "Já atingiu"
-            elif taxa <= 0:
-                status = "Em retrocesso"
-            else:
-                try:
-                    ano_p = int(np.ceil((meta - coef[1]) / coef[0]))
-                except (ZeroDivisionError, OverflowError):
-                    ano_p = 9999
-                status = "No prazo" if ano_p <= ANO_META else "Não atingirá"
-            res.append({"Município": nome, "Atual (%)": round(atual, 1), "pp/ano": round(taxa, 2),
-                        "Projeção 2033 (%)": round(min(max(proj, 0), 100), 1), "Status": status})
+    opcoes = {"Água - meta 99%": ("indice_atendimento_total_agua", META_AGUA),
+              "Esgoto - meta 90%": ("indice_coleta_esgoto", META_ESGOTO)}
+    escolha = st.selectbox("Selecione o indicador", list(opcoes.keys()), key="marco_indicador")
+    indicador, meta = opcoes[escolha]
 
-        df_p = pd.DataFrame(res)
-        if df_p.empty:
+    df_h = df[df["ano"].between(2014, ultimo_ano)][["ano", "id_municipio", "nome_municipio", indicador]].dropna()
+    res = []
+    for mid, g in df_h.groupby("id_municipio"):
+        if len(g) < 3:
             continue
+        nome = g["nome_municipio"].iloc[0]
+        coef = np.polyfit(g["ano"].values.astype(float), g[indicador].values, 1)
+        taxa = coef[0]
+        atual = float(np.polyval(coef, ultimo_ano))
+        proj = float(np.polyval(coef, ANO_META))
+        if atual >= meta:
+            status = "Já atingiu"
+        elif taxa <= 0:
+            status = "Em retrocesso"
+        else:
+            try:
+                ano_p = int(np.ceil((meta - coef[1]) / coef[0]))
+            except (ZeroDivisionError, OverflowError):
+                ano_p = 9999
+            status = "No prazo" if ano_p <= ANO_META else "Não atingirá"
+        res.append({"Município": nome, "Atual (%)": round(atual, 1), "pp/ano": round(taxa, 2),
+                    "Projeção 2033 (%)": round(min(max(proj, 0), 100), 1), "Status": status})
 
-        cor_st = {"Já atingiu": "#16a34a", "No prazo": "#2563eb",
-                  "Não atingirá": "#dc2626", "Em retrocesso": "#7c3aed"}
+    df_p = pd.DataFrame(res)
+    if df_p.empty:
+        st.info("Dados insuficientes para projeção.")
+        return
 
-        cc = st.columns(4)
-        for col, status in zip(cc, ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]):
-            n = (df_p["Status"] == status).sum()
-            c = cor_st[status]
-            col.markdown(f"""
-            <div style="text-align:center;padding:.6rem;border-radius:10px;background:{c}10;border:1px solid {c}25">
-                <div style="font-size:1.8rem;font-weight:900;color:{c}">{n}</div>
-                <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">{status}</div>
-            </div>
-            """, unsafe_allow_html=True)
+    cor_st = {"Já atingiu": "#16a34a", "No prazo": "#2563eb",
+              "Não atingirá": "#dc2626", "Em retrocesso": "#7c3aed"}
 
-        fig = px.bar(df_p.sort_values("Projeção 2033 (%)"), x="Projeção 2033 (%)", y="Município",
-                     orientation="h", color="Status", color_discrete_map=cor_st,
-                     height=max(400, len(df_p) * 16))
+    cc = st.columns(4)
+    for col, status in zip(cc, ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]):
+        n = (df_p["Status"] == status).sum()
+        c = cor_st[status]
+        col.markdown(f"""
+        <div style="text-align:center;padding:.6rem;border-radius:10px;background:{c}10;border:1px solid {c}25">
+            <div style="font-size:1.8rem;font-weight:900;color:{c}">{n}</div>
+            <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">{status}</div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    status_list = ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]
+    for status in status_list:
+        df_s = df_p[df_p["Status"] == status].sort_values("Projeção 2033 (%)")
+        if df_s.empty:
+            continue
+        cor = cor_st[status]
+        st.markdown(f'<div style="margin-top:1.2rem;font-weight:700;color:{cor}">{status} ({len(df_s)} municípios)</div>',
+                    unsafe_allow_html=True)
+        fig = px.bar(df_s, x="Projeção 2033 (%)", y="Município",
+                     orientation="h",
+                     height=max(200, len(df_s) * 22))
+        fig.update_traces(marker_color=cor)
         fig.add_vline(x=meta, line_dash="dash", line_color="#dc2626",
                       annotation_text=f"Meta {meta}%", annotation_font_size=9)
-        fig.update_layout(margin=dict(l=0, r=10, t=10, b=10),
-                          legend=dict(orientation="h", y=-0.04, font=dict(size=10)))
-        st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch", key=f"marco_{indicador}")
+        fig.update_layout(margin=dict(l=0, r=10, t=10, b=10), showlegend=False)
+        st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
+                        key=f"marco_{indicador}_{status}")
 
-        nao = df_p[df_p["Status"].isin(["Não atingirá", "Em retrocesso"])]
-        if not nao.empty:
-            nomes = ", ".join(nao.nsmallest(5, "Projeção 2033 (%)")["Município"].tolist())
-            st.markdown(f"""
-            <div class="insight alert">
-                <strong>{len(nao)} municípios</strong> não atingirão a meta de {titulo.split(' -')[0].strip().lower()}
-                até {ANO_META} no ritmo atual. Projeções mais distantes da meta: <strong>{nomes}</strong>.
-            </div>
-            """, unsafe_allow_html=True)
+    nao = df_p[df_p["Status"].isin(["Não atingirá", "Em retrocesso"])]
+    if not nao.empty:
+        nomes = ", ".join(nao.nsmallest(5, "Projeção 2033 (%)")["Município"].tolist())
+        st.markdown(f"""
+        <div class="insight alert">
+            <strong>{len(nao)} municípios</strong> não atingirão a meta de {escolha.split(' -')[0].strip().lower()}
+            até {ANO_META} no ritmo atual. Projeções mais distantes da meta: <strong>{nomes}</strong>.
+        </div>
+        """, unsafe_allow_html=True)
 
-        with st.expander("Ver tabela completa"):
-            st.dataframe(df_p.sort_values("Projeção 2033 (%)"), hide_index=True, width="stretch")
+    with st.expander("Ver tabela completa"):
+        st.dataframe(df_p.sort_values("Projeção 2033 (%)"), hide_index=True, width="stretch")
 
 
 # ── Clusterização K-Means ──
