@@ -8,3 +8,6 @@ ipykernel
 nbformat
 matplotlib
 seaborn
+scikit-learn
+statsmodels
+pysus
