@@ -11,7 +11,7 @@ from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 
 st.set_page_config(
-    page_title="Radar Risco Sanitário — RJ",
+    page_title="Radar Risco Sanitário - RJ",
     page_icon="🚰",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -287,7 +287,7 @@ def render_hero(df_atual, ultimo_ano):
 
     st.markdown(f"""
     <div class="hero">
-        <h1>Radar de Risco Sanitário — Rio de Janeiro</h1>
+        <h1>Radar de Risco Sanitário - Rio de Janeiro</h1>
         <div class="sub">Diagnóstico do saneamento básico nos 92 municípios do estado · Dados {ultimo_ano} · SNIS / SINISA / IBGE</div>
         <div class="bn-row">
             <div class="bn-card"><div class="number">{fmt_pop(pop)}</div><div class="label">População total</div></div>
@@ -366,7 +366,7 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
         if esgoto >= META_ESGOTO:
             interpretacoes.append(f"Coleta de esgoto ({esgoto:.1f}%) atinge a meta do Marco Legal ({META_ESGOTO}%).")
         elif esgoto < 30:
-            interpretacoes.append(f"Coleta de esgoto de apenas <strong>{esgoto:.1f}%</strong> — situação que demanda atenção prioritária.")
+            interpretacoes.append(f"Coleta de esgoto de apenas <strong>{esgoto:.1f}%</strong> - situação que demanda atenção prioritária.")
         else:
             cmp = "acima" if esgoto >= media_esgoto else "<strong>abaixo</strong>"
             interpretacoes.append(f"Coleta de esgoto ({esgoto:.1f}%) {cmp} da média estadual ({media_esgoto:.1f}%).")
@@ -380,7 +380,7 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
     if pd.notna(gap) and gap > 30:
         interpretacoes.append(f"Descompasso de <strong>{gap:.0f} pontos percentuais</strong> entre água e esgoto.")
     if pd.notna(perda) and perda > 40:
-        interpretacoes.append(f"Perda na distribuição de <strong>{perda:.0f}%</strong> — patamar considerado elevado pelo SNIS.")
+        interpretacoes.append(f"Perda na distribuição de <strong>{perda:.0f}%</strong> - patamar considerado elevado pelo SNIS.")
 
     if interpretacoes:
         body = " · ".join(interpretacoes)
@@ -490,7 +490,7 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
         else:
             st.markdown(f"""
 <div class="insight" style="margin-top:0">
-    <strong>Resumo estadual — {label_ind}</strong><br><br>
+    <strong>Resumo estadual - {label_ind}</strong><br><br>
     <span class="metric-mini"><span class="val">{media:.1f}</span><span class="lbl">Média</span></span>
     <span class="metric-mini"><span class="val">{mediana:.1f}</span><span class="lbl">Mediana</span></span><br>
     <span class="metric-mini"><span class="val">{std:.1f}</span><span class="lbl">Desvio padrão</span></span>
@@ -645,14 +645,14 @@ def render_perdas(df, df_atual, ultimo_ano):
     col_txt, col_g = st.columns([1, 2])
     col_txt.markdown(f"""
 A **perda na distribuição** mede o percentual de água tratada que é desperdiçada
-antes de chegar ao consumidor — seja por vazamentos, ligações clandestinas
+antes de chegar ao consumidor - seja por vazamentos, ligações clandestinas
 ou problemas de medição.
 
 Em {ultimo_ano}, a perda média no estado do RJ foi de **{media_perda:.1f}%**.
 O município com maior perda é **{mais_perda['nome_municipio']}** ({mais_perda['indice_perda_distribuicao_agua']:.0f}%),
 enquanto **{menos_perda['nome_municipio']}** registra a menor ({menos_perda['indice_perda_distribuicao_agua']:.0f}%).
 
-**{acima_40} municípios** perdem mais de 40% da água tratada —
+**{acima_40} municípios** perdem mais de 40% da água tratada -
 um patamar considerado elevado pelo próprio SNIS.
     """)
 
@@ -770,8 +770,8 @@ def render_marco_legal(df, ultimo_ano):
     """, unsafe_allow_html=True)
 
     for indicador, meta, titulo in [
-        ("indice_atendimento_total_agua", META_AGUA, "Água — meta 99%"),
-        ("indice_coleta_esgoto", META_ESGOTO, "Esgoto — meta 90%"),
+        ("indice_atendimento_total_agua", META_AGUA, "Água - meta 99%"),
+        ("indice_coleta_esgoto", META_ESGOTO, "Esgoto - meta 90%"),
     ]:
         st.markdown(f"**{titulo}**")
         df_h = df[df["ano"].between(2014, ultimo_ano)][["ano", "id_municipio", "nome_municipio", indicador]].dropna()
@@ -829,7 +829,7 @@ def render_marco_legal(df, ultimo_ano):
             nomes = ", ".join(nao.nsmallest(5, "Projeção 2033 (%)")["Município"].tolist())
             st.markdown(f"""
             <div class="insight alert">
-                <strong>{len(nao)} municípios</strong> não atingirão a meta de {titulo.split('—')[0].strip().lower()}
+                <strong>{len(nao)} municípios</strong> não atingirão a meta de {titulo.split(' -')[0].strip().lower()}
                 até {ANO_META} no ritmo atual. Projeções mais distantes da meta: <strong>{nomes}</strong>.
             </div>
             """, unsafe_allow_html=True)
@@ -1035,8 +1035,8 @@ def render_footer():
                 <h4>Fontes de Dados</h4>
                 • <a href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/snis" target="_blank">SNIS</a><br>
                 • <a href="https://www.gov.br/cidades/pt-br/acesso-a-informacao/acoes-e-programas/saneamento/sinisa" target="_blank">SINISA</a><br>
-                • <a href="https://censo2022.ibge.gov.br/" target="_blank">IBGE — Censo 2022</a><br>
-                • <a href="https://sidra.ibge.gov.br/" target="_blank">IBGE SIDRA — PIB municipal</a>
+                • <a href="https://censo2022.ibge.gov.br/" target="_blank">IBGE - Censo 2022</a><br>
+                • <a href="https://sidra.ibge.gov.br/" target="_blank">IBGE SIDRA - PIB municipal</a>
             </div>
             <div style="flex:1;min-width:200px">
                 <h4>Metodologia</h4>
@@ -1044,12 +1044,12 @@ def render_footer():
                 tratamento de esgoto e cobertura de resíduos sólidos.<br>
                 <strong>Projeções:</strong> regressão linear dos últimos 10 anos.<br>
                 <strong>Clusterização:</strong> K-Médias com normalização mínimo-máximo e escolha por silhueta.<br>
-                <strong>Marco Legal:</strong> Lei 14.026/2020 — metas de 99% (água) e 90% (esgoto) até 2033.
+                <strong>Marco Legal:</strong> Lei 14.026/2020 - metas de 99% (água) e 90% (esgoto) até 2033.
             </div>
         </div>
         <hr style="border-color:rgba(255,255,255,.1);margin:1.5rem 0 .75rem">
         <div style="text-align:center;font-size:.7rem;opacity:.5">
-            Radar Risco Sanitário — Rio de Janeiro · 2024–2026
+            Radar Risco Sanitário - Rio de Janeiro · 2024–2026
         </div>
     </div>
     """, unsafe_allow_html=True)
