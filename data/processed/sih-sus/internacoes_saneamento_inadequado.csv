@@ -1,0 +1,457 @@
+ano,id_cid_principal,doenca,categoria,id_municipio_paciente,municipio_paciente,populacao_municipio_paciente,id_municipio_estabelecimento_aih,municipio_estabelecimento_aih,populacao_municipio_estabelecimento_aih,total_internacoes
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3303500,Nova Iguaçu,843046,3970
+2024,A90,Dengue,Vetor,3302700,Maricá,211986,3302700,Maricá,211986,2878
+2024,A90,Dengue,Vetor,3300100,Angra dos Reis,179120,3300100,Angra dos Reis,179120,2366
+2023,A90,Dengue,Vetor,3305000,São João da Barra,36573,3305000,São João da Barra,36573,1291
+2024,A91,Dengue Hemorrágica,Vetor,3302700,Maricá,211986,3302700,Maricá,211986,1135
+2023,A90,Dengue,Vetor,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,1022
+2024,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,59113,3304300,Rio Bonito,59113,716
+2024,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,179120,3300100,Angra dos Reis,179120,713
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3301900,Itaboraí,240040,673
+2023,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3302700,Maricá,197277,651
+2024,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,211986,3302700,Maricá,211986,615
+2014,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,806177,3303500,Nova Iguaçu,806177,574
+2015,A90,Dengue,Vetor,3300100,Angra dos Reis,188276,3300100,Angra dos Reis,188276,560
+2023,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,56276,3304300,Rio Bonito,56276,536
+2014,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,57284,3304300,Rio Bonito,57284,459
+2022,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,56276,3304300,Rio Bonito,56276,454
+2024,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,843046,3303500,Nova Iguaçu,843046,417
+2015,A90,Dengue,Vetor,3304110,Porto Real,18266,3304110,Porto Real,18266,378
+2024,A90,Dengue,Vetor,3305000,São João da Barra,38708,3305000,São João da Barra,38708,377
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3301900,Itaboraí,224267,373
+2018,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,59814,3304300,Rio Bonito,59814,366
+2024,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240040,3301900,Itaboraí,240040,355
+2024,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,843046,3303500,Nova Iguaçu,843046,351
+2016,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,57963,3304300,Rio Bonito,57963,329
+2014,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,184940,3300100,Angra dos Reis,184940,325
+2019,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,203785,3300100,Angra dos Reis,203785,318
+2024,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,240040,3301900,Itaboraí,240040,312
+2014,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,227168,3301900,Itaboraí,227168,303
+2020,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,207044,3300100,Angra dos Reis,207044,296
+2015,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,57615,3304300,Rio Bonito,57615,292
+2023,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3304557,Rio de Janeiro,6211223,250
+2018,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,200407,3300100,Angra dos Reis,200407,246
+2021,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,60930,3304300,Rio Bonito,60930,242
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3304557,Rio de Janeiro,6729894,241
+2024,A90,Dengue,Vetor,3302270,Japeri,102149,3302270,Japeri,102149,235
+2016,A90,Dengue,Vetor,3304300,Rio Bonito,57963,3304300,Rio Bonito,57963,231
+2017,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,58272,3304300,Rio Bonito,58272,225
+2019,A90,Dengue,Vetor,3300100,Angra dos Reis,203785,3300100,Angra dos Reis,203785,225
+2022,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3302700,Maricá,197277,222
+2023,A90,Dengue,Vetor,3302700,Maricá,197277,3302700,Maricá,197277,217
+2024,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,843046,3304557,Rio de Janeiro,6729894,207
+2017,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,57921,3301850,Guapimirim,57921,204
+2018,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,238695,3301900,Itaboraí,238695,194
+2024,A90,Dengue,Vetor,3304300,Rio Bonito,59113,3304300,Rio Bonito,59113,192
+2023,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,36573,3305000,São João da Barra,36573,187
+2024,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,843046,3304557,Rio de Janeiro,6729894,185
+2019,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,161207,3302700,Maricá,161207,185
+2015,A90,Dengue,Vetor,3305000,São João da Barra,34583,3305000,São João da Barra,34583,179
+2024,A00,Cólera,Hídrica,3303500,Nova Iguaçu,843046,3303500,Nova Iguaçu,843046,174
+2016,A90,Dengue,Vetor,3300100,Angra dos Reis,191504,3300100,Angra dos Reis,191504,170
+2023,A90,Dengue,Vetor,3302270,Japeri,96289,3302270,Japeri,96289,170
+2017,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,194619,3300100,Angra dos Reis,194619,165
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3306305,Volta Redonda,279898,164
+2022,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,162
+2024,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240040,3304904,São Gonçalo,960652,160
+2015,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,188276,3300100,Angra dos Reis,188276,160
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,229007,3301900,Itaboraí,229007,158
+2024,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,179120,3300100,Angra dos Reis,179120,155
+2018,A90,Dengue,Vetor,3304300,Rio Bonito,59814,3304300,Rio Bonito,59814,152
+2015,A90,Dengue,Vetor,3305000,São João da Barra,34583,3301009,Campos dos Goytacazes,483970,146
+2022,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3304557,Rio de Janeiro,6211223,146
+2024,A90,Dengue,Vetor,3304110,Porto Real,21064,3304110,Porto Real,21064,142
+2019,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240592,3301900,Itaboraí,240592,141
+2022,A90,Dengue,Vetor,3305000,São João da Barra,36573,3305000,São João da Barra,36573,136
+2023,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,134
+2015,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,188276,3300100,Angra dos Reis,188276,134
+2015,A90,Dengue,Vetor,3302700,Maricá,146549,3302700,Maricá,146549,134
+2021,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,825388,3304557,Rio de Janeiro,6775561,132
+2017,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,232394,3301900,Itaboraí,232394,131
+2022,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3301900,Itaboraí,224267,130
+2018,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,818875,3304557,Rio de Janeiro,6688927,129
+2015,A90,Dengue,Vetor,3304300,Rio Bonito,57615,3304300,Rio Bonito,57615,128
+2014,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,806177,3304557,Rio de Janeiro,6453682,125
+2016,A90,Dengue,Vetor,3301900,Itaboraí,230786,3301900,Itaboraí,230786,124
+2022,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,36573,3305000,São João da Barra,36573,122
+2024,A90,Dengue,Vetor,3302270,Japeri,102149,3303500,Nova Iguaçu,843046,120
+2024,A90,Dengue,Vetor,3300100,Angra dos Reis,179120,3306305,Volta Redonda,279898,117
+2018,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,157789,3302700,Maricá,157789,117
+2024,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240040,3303302,Niterói,516720,116
+2023,A90,Dengue,Vetor,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,116
+2021,A90,Dengue,Vetor,3304110,Porto Real,20254,3304110,Porto Real,20254,113
+2016,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,57105,3301850,Guapimirim,57105,113
+2019,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,60517,3301850,Guapimirim,60517,111
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3304904,São Gonçalo,960652,110
+2024,A90,Dengue,Vetor,3305000,São João da Barra,38708,3301009,Campos dos Goytacazes,519011,109
+2016,A90,Dengue,Vetor,3302270,Japeri,100562,3303609,Paracambi,50071,107
+2016,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,230786,3301900,Itaboraí,230786,102
+2024,A90,Dengue,Vetor,3301850,Guapimirim,54300,3302502,Magé,244092,100
+2016,A90,Dengue,Vetor,3302700,Maricá,149876,3302700,Maricá,149876,98
+2022,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3303302,Niterói,481749,98
+2014,A90,Dengue,Vetor,3303500,Nova Iguaçu,806177,3303500,Nova Iguaçu,806177,95
+2016,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,797435,3304557,Rio de Janeiro,6498837,92
+2015,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,807492,3304557,Rio de Janeiro,6476631,92
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3303302,Niterói,481749,91
+2018,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,59613,3301850,Guapimirim,59613,89
+2024,A90,Dengue,Vetor,3301850,Guapimirim,54300,3301850,Guapimirim,54300,89
+2016,A90,Dengue,Vetor,3305000,São João da Barra,34884,3305000,São João da Barra,34884,88
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3303302,Niterói,516720,87
+2024,A90,Dengue,Vetor,3304300,Rio Bonito,59113,3303500,Nova Iguaçu,843046,87
+2014,A90,Dengue,Vetor,3302270,Japeri,99141,3302270,Japeri,99141,86
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3305752,Tanguá,32858,85
+2024,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,240040,3304904,São Gonçalo,960652,82
+2020,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,823302,3304557,Rio de Janeiro,6747815,78
+2022,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3304904,São Gonçalo,896744,78
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3304557,Rio de Janeiro,6729894,78
+2024,A90,Dengue,Vetor,3304110,Porto Real,21064,3306305,Volta Redonda,279898,77
+2021,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,244416,3303302,Niterói,516981,76
+2023,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,74
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3303500,Nova Iguaçu,797435,73
+2016,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,191504,3300100,Angra dos Reis,191504,72
+2023,A04,Infecções Intestinais Bacterianas,Hídrica,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,72
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3303500,Nova Iguaçu,843046,72
+2018,A90,Dengue,Vetor,3301900,Itaboraí,238695,3301900,Itaboraí,238695,71
+2023,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,67
+2023,A90,Dengue,Vetor,3304300,Rio Bonito,56276,3304300,Rio Bonito,56276,67
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,56515,3301850,Guapimirim,56515,65
+2019,A90,Dengue,Vetor,3305000,São João da Barra,36102,3305000,São João da Barra,36102,63
+2023,A90,Dengue,Vetor,3301900,Itaboraí,224267,3301900,Itaboraí,224267,61
+2015,A91,Dengue Hemorrágica,Vetor,3305000,São João da Barra,34583,3301009,Campos dos Goytacazes,483970,61
+2016,A90,Dengue,Vetor,3301850,Guapimirim,57105,3301850,Guapimirim,57105,60
+2024,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,240040,3303500,Nova Iguaçu,843046,59
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3300456,Belford Roxo,518263,59
+2016,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,149876,3302700,Maricá,149876,59
+2023,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,56276,3303302,Niterói,481749,59
+2014,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,143111,3304557,Rio de Janeiro,6453682,59
+2014,A90,Dengue,Vetor,3304300,Rio Bonito,57284,3304300,Rio Bonito,57284,59
+2024,A90,Dengue,Vetor,3300100,Angra dos Reis,179120,3303500,Nova Iguaçu,843046,57
+2020,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,207044,3300100,Angra dos Reis,207044,57
+2022,A90,Dengue,Vetor,3304110,Porto Real,20373,3304110,Porto Real,20373,57
+2016,A90,Dengue,Vetor,3304110,Porto Real,18552,3304110,Porto Real,18552,56
+2016,A91,Dengue Hemorrágica,Vetor,3302700,Maricá,149876,3302700,Maricá,149876,56
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,229007,3303302,Niterói,496696,56
+2014,A90,Dengue,Vetor,3302700,Maricá,143111,3302700,Maricá,143111,56
+2020,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,242543,3301900,Itaboraí,242543,55
+2017,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,35174,3301009,Campos dos Goytacazes,490288,55
+2024,A90,Dengue,Vetor,3302700,Maricá,211986,3301900,Itaboraí,240040,54
+2019,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,36102,3301009,Campos dos Goytacazes,507548,54
+2020,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,164504,3302700,Maricá,164504,54
+2015,A90,Dengue,Vetor,3301900,Itaboraí,229007,3301900,Itaboraí,229007,53
+2020,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,60573,3304300,Rio Bonito,60573,53
+2016,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,34884,3301009,Campos dos Goytacazes,487186,53
+2019,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,821128,3304557,Rio de Janeiro,6718903,53
+2024,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,211986,3303302,Niterói,516720,52
+2019,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,240592,3301900,Itaboraí,240592,52
+2019,A90,Dengue,Vetor,3304110,Porto Real,19683,3304110,Porto Real,19683,52
+2016,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,797435,3303500,Nova Iguaçu,797435,49
+2023,A90,Dengue,Vetor,3301850,Guapimirim,51696,3301850,Guapimirim,51696,49
+2023,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3303302,Niterói,481749,49
+2017,A90,Dengue,Vetor,3301850,Guapimirim,57921,3302502,Magé,237420,48
+2017,A90,Dengue,Vetor,3304300,Rio Bonito,58272,3304300,Rio Bonito,58272,48
+2024,A90,Dengue,Vetor,3302270,Japeri,102149,3304557,Rio de Janeiro,6729894,48
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3302700,Maricá,211986,48
+2022,A04,Infecções Intestinais Bacterianas,Hídrica,3303500,Nova Iguaçu,785867,3300456,Belford Roxo,483087,48
+2016,A90,Dengue,Vetor,3302700,Maricá,149876,3303302,Niterói,497883,48
+2019,A90,Dengue,Vetor,3304300,Rio Bonito,60201,3304300,Rio Bonito,60201,47
+2021,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,167668,3302700,Maricá,167668,46
+2021,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,244416,3301900,Itaboraí,244416,46
+2021,A91,Dengue Hemorrágica,Vetor,3304110,Porto Real,20254,3304110,Porto Real,20254,46
+2024,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,843046,3302601,Mangaratiba,43624,46
+2014,A90,Dengue,Vetor,3303500,Nova Iguaçu,806177,3304144,Queimados,142709,46
+2024,L08,Infecções Cutâneas,Outra,3301850,Guapimirim,54300,3301850,Guapimirim,54300,45
+2022,A90,Dengue,Vetor,3303500,Nova Iguaçu,785867,3304557,Rio de Janeiro,6211223,45
+2014,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,17970,3304110,Porto Real,17970,45
+2024,A90,Dengue,Vetor,3302270,Japeri,102149,3306305,Volta Redonda,279898,45
+2021,A90,Dengue,Vetor,3303500,Nova Iguaçu,825388,3303500,Nova Iguaçu,825388,44
+2024,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,102149,3303500,Nova Iguaçu,843046,44
+2022,A90,Dengue,Vetor,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,44
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3300456,Belford Roxo,494141,43
+2024,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240040,3304300,Rio Bonito,59113,43
+2023,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,167434,3306305,Volta Redonda,261563,43
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3304557,Rio de Janeiro,6498837,43
+2023,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,43
+2014,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,227168,3304300,Rio Bonito,57284,41
+2021,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,20254,3304110,Porto Real,20254,41
+2023,A90,Dengue,Vetor,3303500,Nova Iguaçu,785867,3306305,Volta Redonda,261563,41
+2017,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,798647,3304557,Rio de Janeiro,6520266,41
+2019,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,161207,3304904,São Gonçalo,1084839,41
+2022,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,40
+2015,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,99863,3303609,Paracambi,49521,40
+2022,A90,Dengue,Vetor,3302270,Japeri,96289,3302270,Japeri,96289,40
+2022,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,167434,3306305,Volta Redonda,261563,40
+2015,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,146549,3304557,Rio de Janeiro,6476631,40
+2014,A90,Dengue,Vetor,3300100,Angra dos Reis,184940,3300100,Angra dos Reis,184940,40
+2020,A90,Dengue,Vetor,3304110,Porto Real,19974,3304110,Porto Real,19974,40
+2020,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,823302,3301702,Duque de Caxias,924624,40
+2017,A91,Dengue Hemorrágica,Vetor,3304300,Rio Bonito,58272,3304300,Rio Bonito,58272,40
+2017,A90,Dengue,Vetor,3300100,Angra dos Reis,194619,3300100,Angra dos Reis,194619,39
+2018,A90,Dengue,Vetor,3305000,São João da Barra,36138,3305000,São João da Barra,36138,39
+2016,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,230786,3304904,São Gonçalo,1044058,38
+2014,A90,Dengue,Vetor,3302700,Maricá,143111,3304904,São Gonçalo,1031903,37
+2021,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,825388,3303302,Niterói,516981,37
+2017,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,57921,3305802,Teresópolis,176060,37
+2016,A91,Dengue Hemorrágica,Vetor,3304300,Rio Bonito,57963,3304904,São Gonçalo,1044058,37
+2024,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,102149,3302270,Japeri,102149,37
+2024,A90,Dengue,Vetor,3302700,Maricá,211986,3303302,Niterói,516720,37
+2024,A91,Dengue Hemorrágica,Vetor,3302270,Japeri,102149,3303500,Nova Iguaçu,843046,36
+2014,A90,Dengue,Vetor,3301900,Itaboraí,227168,3301900,Itaboraí,227168,36
+2023,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,36573,3301009,Campos dos Goytacazes,483540,34
+2023,A90,Dengue,Vetor,3301900,Itaboraí,224267,3303500,Nova Iguaçu,785867,34
+2014,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,55626,3301850,Guapimirim,55626,34
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3303609,Paracambi,50071,33
+2017,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,798647,3303500,Nova Iguaçu,798647,33
+2024,A90,Dengue,Vetor,3302700,Maricá,211986,3303500,Nova Iguaçu,843046,33
+2016,A90,Dengue,Vetor,3305000,São João da Barra,34884,3301009,Campos dos Goytacazes,487186,33
+2014,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,227168,3304904,São Gonçalo,1031903,33
+2023,A91,Dengue Hemorrágica,Vetor,3301850,Guapimirim,51696,3301850,Guapimirim,51696,32
+2022,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3304904,São Gonçalo,896744,32
+2024,A90,Dengue,Vetor,3301850,Guapimirim,54300,3303500,Nova Iguaçu,843046,32
+2019,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,60201,3304300,Rio Bonito,60201,32
+2019,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,821128,3303500,Nova Iguaçu,821128,31
+2020,A90,Dengue,Vetor,3301900,Itaboraí,242543,3301900,Itaboraí,242543,31
+2024,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,59113,3304557,Rio de Janeiro,6729894,31
+2020,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,61388,3301850,Guapimirim,61388,31
+2017,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,798647,3303500,Nova Iguaçu,798647,30
+2016,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,230786,3304300,Rio Bonito,57963,30
+2017,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,232394,3304904,São Gonçalo,1049826,30
+2021,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,825388,3301702,Duque de Caxias,929449,30
+2024,A01,Febre Tifóide e Paratifóide,Hídrica,3303500,Nova Iguaçu,843046,3303500,Nova Iguaçu,843046,30
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,51696,3302502,Magé,228127,30
+2017,A90,Dengue,Vetor,3305000,São João da Barra,35174,3301009,Campos dos Goytacazes,490288,30
+2018,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,238695,3301900,Itaboraí,238695,30
+2018,A90,Dengue,Vetor,3301900,Itaboraí,238695,3304904,São Gonçalo,1077687,30
+2014,A90,Dengue,Vetor,3302270,Japeri,99141,3304144,Queimados,142709,29
+2016,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,797435,3301702,Duque de Caxias,886917,28
+2022,A90,Dengue,Vetor,3304300,Rio Bonito,56276,3304300,Rio Bonito,56276,28
+2024,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,843046,3303302,Niterói,516720,28
+2023,A91,Dengue Hemorrágica,Vetor,3305000,São João da Barra,36573,3301009,Campos dos Goytacazes,483540,27
+2019,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,203785,3304557,Rio de Janeiro,6718903,27
+2022,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3303302,Niterói,481749,27
+2014,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,99141,3303609,Paracambi,49120,27
+2023,A90,Dengue,Vetor,3302700,Maricá,197277,3301900,Itaboraí,224267,26
+2014,A90,Dengue,Vetor,3302700,Maricá,143111,3303302,Niterói,495470,26
+2022,A90,Dengue,Vetor,3302270,Japeri,96289,3304557,Rio de Janeiro,6211223,26
+2016,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,100562,3303609,Paracambi,50071,26
+2024,A90,Dengue,Vetor,3301900,Itaboraí,240040,3300258,Arraial do Cabo,32794,26
+2023,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,224267,3301900,Itaboraí,224267,25
+2021,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,210171,3300100,Angra dos Reis,210171,25
+2018,A91,Dengue Hemorrágica,Vetor,3304300,Rio Bonito,59814,3304300,Rio Bonito,59814,25
+2023,A90,Dengue,Vetor,3303500,Nova Iguaçu,785867,3304557,Rio de Janeiro,6211223,24
+2023,A90,Dengue,Vetor,3303500,Nova Iguaçu,785867,3300456,Belford Roxo,483087,24
+2021,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,106296,3304557,Rio de Janeiro,6775561,24
+2021,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,167668,3303302,Niterói,516981,24
+2015,A90,Dengue,Vetor,3303500,Nova Iguaçu,807492,3303500,Nova Iguaçu,807492,24
+2014,A90,Dengue,Vetor,3301850,Guapimirim,55626,3301850,Guapimirim,55626,23
+2019,A90,Dengue,Vetor,3301900,Itaboraí,240592,3301900,Itaboraí,240592,23
+2018,A90,Dengue,Vetor,3305000,São João da Barra,36138,3301009,Campos dos Goytacazes,503424,23
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3301702,Duque de Caxias,866347,23
+2014,A90,Dengue,Vetor,3303500,Nova Iguaçu,806177,3300456,Belford Roxo,479386,22
+2018,A09,Diarreia e Gastroenterite,Hídrica,3304300,Rio Bonito,59814,3304557,Rio de Janeiro,6688927,22
+2016,A90,Dengue,Vetor,3302700,Maricá,149876,3301900,Itaboraí,230786,22
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3304557,Rio de Janeiro,6211223,22
+2024,A90,Dengue,Vetor,3304110,Porto Real,21064,3304201,Resende,137612,22
+2016,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,149876,3304557,Rio de Janeiro,6498837,22
+2018,A90,Dengue,Vetor,3302700,Maricá,157789,3304904,São Gonçalo,1077687,21
+2017,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,232394,3304300,Rio Bonito,58272,21
+2020,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,105548,3304557,Rio de Janeiro,6747815,21
+2016,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,230786,3301900,Itaboraí,230786,20
+2014,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,806177,3304557,Rio de Janeiro,6453682,20
+2019,A90,Dengue,Vetor,3303500,Nova Iguaçu,821128,3304557,Rio de Janeiro,6718903,20
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,229007,3304300,Rio Bonito,57615,20
+2024,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,21064,3304128,Quatis,14158,20
+2022,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3303500,Nova Iguaçu,785867,20
+2019,A90,Dengue,Vetor,3303500,Nova Iguaçu,821128,3303500,Nova Iguaçu,821128,20
+2014,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,184940,3300100,Angra dos Reis,184940,19
+2024,A90,Dengue,Vetor,3304110,Porto Real,21064,3300407,Barra Mansa,181688,19
+2015,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,18266,3304557,Rio de Janeiro,6476631,19
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3305109,São João de Meriti,466536,19
+2023,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,20373,3304110,Porto Real,20373,19
+2018,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,19381,3304110,Porto Real,19381,19
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3305554,Seropédica,84737,19
+2015,A91,Dengue Hemorrágica,Vetor,3304300,Rio Bonito,57615,3304557,Rio de Janeiro,6476631,19
+2024,A91,Dengue Hemorrágica,Vetor,3305000,São João da Barra,38708,3305000,São João da Barra,38708,18
+2021,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,36731,3305000,São João da Barra,36731,18
+2017,A90,Dengue,Vetor,3301900,Itaboraí,232394,3301900,Itaboraí,232394,18
+2014,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,34273,3301009,Campos dos Goytacazes,480648,18
+2024,A90,Dengue,Vetor,3303500,Nova Iguaçu,843046,3302007,Itaguaí,123980,18
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3304904,São Gonçalo,896744,18
+2015,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,34583,3305000,São João da Barra,34583,18
+2015,A90,Dengue,Vetor,3302270,Japeri,99863,3303609,Paracambi,49521,18
+2020,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,242543,3303302,Niterói,515317,18
+2024,A90,Dengue,Vetor,3302700,Maricá,211986,3304904,São Gonçalo,960652,18
+2016,A90,Dengue,Vetor,3301900,Itaboraí,230786,3304904,São Gonçalo,1044058,18
+2022,A04,Infecções Intestinais Bacterianas,Hídrica,3301900,Itaboraí,224267,3301900,Itaboraí,224267,17
+2015,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,807492,3304300,Rio Bonito,57615,17
+2017,A90,Dengue,Vetor,3301900,Itaboraí,232394,3303302,Niterói,499028,17
+2018,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,238695,3304300,Rio Bonito,59814,17
+2019,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,104768,3303609,Paracambi,52257,17
+2022,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,96289,3302908,Miguel Pereira,26582,17
+2022,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3304300,Rio Bonito,56276,16
+2020,A90,Dengue,Vetor,3304300,Rio Bonito,60573,3304300,Rio Bonito,60573,16
+2016,A91,Dengue Hemorrágica,Vetor,3301850,Guapimirim,57105,3301850,Guapimirim,57105,16
+2022,A90,Dengue,Vetor,3302700,Maricá,197277,3303302,Niterói,481749,16
+2024,A91,Dengue Hemorrágica,Vetor,3301850,Guapimirim,54300,3301850,Guapimirim,54300,16
+2023,A90,Dengue,Vetor,3301900,Itaboraí,224267,3302700,Maricá,197277,15
+2018,A90,Dengue,Vetor,3303500,Nova Iguaçu,818875,3303500,Nova Iguaçu,818875,15
+2023,A90,Dengue,Vetor,3301850,Guapimirim,51696,3305802,Teresópolis,165123,15
+2017,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,153008,3302700,Maricá,153008,15
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3304144,Queimados,144525,15
+2017,A90,Dengue,Vetor,3303500,Nova Iguaçu,798647,3304144,Queimados,145386,15
+2018,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,818875,3303500,Nova Iguaçu,818875,15
+2015,A90,Dengue,Vetor,3303500,Nova Iguaçu,807492,3304144,Queimados,143632,15
+2020,L08,Infecções Cutâneas,Outra,3303500,Nova Iguaçu,823302,3301702,Duque de Caxias,924624,14
+2014,A90,Dengue,Vetor,3301850,Guapimirim,55626,3302502,Magé,233634,14
+2023,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,96289,3302270,Japeri,96289,14
+2019,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,104768,3304557,Rio de Janeiro,6718903,14
+2016,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,230786,3303302,Niterói,497883,14
+2016,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,797435,3303500,Nova Iguaçu,797435,14
+2014,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,806177,3303500,Nova Iguaçu,806177,14
+2015,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,99863,3304557,Rio de Janeiro,6476631,14
+2017,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,57921,3304557,Rio de Janeiro,6520266,14
+2017,A90,Dengue,Vetor,3301900,Itaboraí,232394,3304904,São Gonçalo,1049826,14
+2022,A90,Dengue,Vetor,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,14
+2021,A90,Dengue,Vetor,3303500,Nova Iguaçu,825388,3304557,Rio de Janeiro,6775561,14
+2021,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,244416,3304904,São Gonçalo,1098357,14
+2023,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3304904,São Gonçalo,896744,13
+2022,A08,Infecções Intestinais Virais,Hídrica,3303500,Nova Iguaçu,785867,3300456,Belford Roxo,483087,13
+2016,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,100562,3304557,Rio de Janeiro,6498837,13
+2024,A91,Dengue Hemorrágica,Vetor,3302270,Japeri,102149,3304557,Rio de Janeiro,6729894,13
+2015,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,34583,3301009,Campos dos Goytacazes,483970,13
+2024,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,21064,3304557,Rio de Janeiro,6729894,13
+2023,A90,Dengue,Vetor,3305000,São João da Barra,36573,3301009,Campos dos Goytacazes,483540,13
+2015,A90,Dengue,Vetor,3301900,Itaboraí,229007,3304300,Rio Bonito,57615,12
+2018,A90,Dengue,Vetor,3301850,Guapimirim,59613,3301850,Guapimirim,59613,12
+2020,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,207044,3304557,Rio de Janeiro,6747815,12
+2020,L08,Infecções Cutâneas,Outra,3301850,Guapimirim,61388,3301850,Guapimirim,61388,12
+2018,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,157789,3303302,Niterói,511786,12
+2024,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,102149,3304557,Rio de Janeiro,6729894,12
+2014,A90,Dengue,Vetor,3304110,Porto Real,17970,3304110,Porto Real,17970,12
+2017,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,101237,3303609,Paracambi,50447,12
+2019,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,821128,3301702,Duque de Caxias,919596,11
+2014,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,99141,3303500,Nova Iguaçu,806177,11
+2020,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,823302,3300456,Belford Roxo,513118,11
+2021,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,106296,3301702,Duque de Caxias,929449,11
+2019,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,821128,3300100,Angra dos Reis,203785,11
+2018,A90,Dengue,Vetor,3302700,Maricá,157789,3302700,Maricá,157789,11
+2023,L08,Infecções Cutâneas,Outra,3302270,Japeri,96289,3304557,Rio de Janeiro,6211223,10
+2014,A90,Dengue,Vetor,3303500,Nova Iguaçu,806177,3303609,Paracambi,49120,10
+2016,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,230786,3300803,Cachoeiras de Macacu,56603,10
+2018,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,36138,3301009,Campos dos Goytacazes,503424,10
+2021,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,244416,3304300,Rio Bonito,60930,10
+2018,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,200407,3304557,Rio de Janeiro,6688927,10
+2016,A90,Dengue,Vetor,3301900,Itaboraí,230786,3300803,Cachoeiras de Macacu,56603,10
+2015,A91,Dengue Hemorrágica,Vetor,3304300,Rio Bonito,57615,3304300,Rio Bonito,57615,10
+2023,A90,Dengue,Vetor,3300100,Angra dos Reis,167434,3303807,Paraty,45243,10
+2014,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,806177,3303609,Paracambi,49120,10
+2018,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,103960,3303500,Nova Iguaçu,818875,10
+2020,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,823302,3300456,Belford Roxo,513118,9
+2017,A90,Dengue,Vetor,3301850,Guapimirim,57921,3301850,Guapimirim,57921,9
+2024,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,21064,3304110,Porto Real,21064,9
+2020,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,242543,3304904,São Gonçalo,1091737,9
+2016,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,149876,3304904,São Gonçalo,1044058,9
+2018,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,238695,3304904,São Gonçalo,1077687,9
+2018,A90,Dengue,Vetor,3301900,Itaboraí,238695,3304300,Rio Bonito,59814,9
+2016,A90,Dengue,Vetor,3301900,Itaboraí,230786,3304300,Rio Bonito,57963,8
+2023,A90,Dengue,Vetor,3304110,Porto Real,20373,3304110,Porto Real,20373,8
+2019,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,821128,3303500,Nova Iguaçu,821128,8
+2016,A90,Dengue,Vetor,3301850,Guapimirim,57105,3305802,Teresópolis,174587,8
+2021,A90,Dengue,Vetor,3300100,Angra dos Reis,210171,3300100,Angra dos Reis,210171,8
+2024,A91,Dengue Hemorrágica,Vetor,3304110,Porto Real,21064,3304110,Porto Real,21064,8
+2024,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,843046,3304144,Queimados,149093,8
+2023,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3301702,Duque de Caxias,808161,8
+2024,A91,Dengue Hemorrágica,Vetor,3302270,Japeri,102149,3301702,Duque de Caxias,866347,8
+2015,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,807492,3303500,Nova Iguaçu,807492,7
+2022,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3301702,Duque de Caxias,808161,7
+2014,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,806177,3301702,Duque de Caxias,878402,7
+2014,A90,Dengue,Vetor,3302270,Japeri,99141,3303609,Paracambi,49120,7
+2016,A91,Dengue Hemorrágica,Vetor,3301850,Guapimirim,57105,3304557,Rio de Janeiro,6498837,7
+2018,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,818875,3300308,Barra do Piraí,99969,7
+2022,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3300456,Belford Roxo,483087,7
+2014,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,99141,3302908,Miguel Pereira,24829,7
+2019,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,19683,3304110,Porto Real,19683,7
+2023,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,20373,3304557,Rio de Janeiro,6211223,7
+2019,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,161207,3303302,Niterói,513584,7
+2017,A90,Dengue,Vetor,3303500,Nova Iguaçu,798647,3303500,Nova Iguaçu,798647,7
+2022,A91,Dengue Hemorrágica,Vetor,3302700,Maricá,197277,3302700,Maricá,197277,7
+2024,A90,Dengue,Vetor,3302700,Maricá,211986,3304557,Rio de Janeiro,6729894,7
+2016,A09,Diarreia e Gastroenterite,Hídrica,3305000,São João da Barra,34884,3305000,São João da Barra,34884,7
+2017,A90,Dengue,Vetor,3303500,Nova Iguaçu,798647,3300456,Belford Roxo,495783,6
+2019,A90,Dengue,Vetor,3303500,Nova Iguaçu,821128,3300456,Belford Roxo,510906,6
+2020,A90,Dengue,Vetor,3302700,Maricá,164504,3302700,Maricá,164504,6
+2024,L08,Infecções Cutâneas,Outra,3303500,Nova Iguaçu,843046,3304557,Rio de Janeiro,6729894,6
+2019,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240592,3300803,Cachoeiras de Macacu,58937,6
+2024,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240040,3304557,Rio de Janeiro,6729894,6
+2014,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,143111,3303302,Niterói,495470,6
+2022,A91,Dengue Hemorrágica,Vetor,3302270,Japeri,96289,3302007,Itaguaí,116841,6
+2015,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,807492,3304144,Queimados,143632,6
+2016,A90,Dengue,Vetor,3301900,Itaboraí,230786,3303302,Niterói,497883,6
+2023,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3302007,Itaguaí,116841,6
+2015,A90,Dengue,Vetor,3303500,Nova Iguaçu,807492,3303609,Paracambi,49521,6
+2016,A90,Dengue,Vetor,3302270,Japeri,100562,3306206,Vassouras,35622,6
+2016,A09,Diarreia e Gastroenterite,Hídrica,3300100,Angra dos Reis,191504,3303807,Paraty,40975,6
+2016,A90,Dengue,Vetor,3302270,Japeri,100562,3304144,Queimados,144525,6
+2017,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,798647,3301702,Duque de Caxias,890997,6
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,229007,3304904,São Gonçalo,1038081,5
+2023,A91,Dengue Hemorrágica,Vetor,3301900,Itaboraí,224267,3304904,São Gonçalo,896744,5
+2023,A27,Leptospirose,Roedor,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,5
+2021,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,167668,3304557,Rio de Janeiro,6775561,5
+2017,A90,Dengue,Vetor,3305000,São João da Barra,35174,3305000,São João da Barra,35174,5
+2023,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,785867,3304557,Rio de Janeiro,6211223,5
+2014,A90,Dengue,Vetor,3303500,Nova Iguaçu,806177,3304557,Rio de Janeiro,6453682,5
+2016,A90,Dengue,Vetor,3302700,Maricá,149876,3300803,Cachoeiras de Macacu,56603,5
+2019,A90,Dengue,Vetor,3301900,Itaboraí,240592,3300803,Cachoeiras de Macacu,58937,5
+2023,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,96289,3303609,Paracambi,41375,5
+2018,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,103960,3303609,Paracambi,51815,5
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3303302,Niterói,497883,5
+2015,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,807492,3303500,Nova Iguaçu,807492,5
+2017,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,194619,3300100,Angra dos Reis,194619,5
+2022,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,167434,3300100,Angra dos Reis,167434,4
+2014,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,17970,3303708,Paraíba do Sul,42159,4
+2016,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,797435,3303807,Paraty,40975,4
+2024,A91,Dengue Hemorrágica,Vetor,3302270,Japeri,102149,3303609,Paracambi,43656,4
+2015,A90,Dengue,Vetor,3301850,Guapimirim,56515,3301850,Guapimirim,56515,4
+2021,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,825388,3300456,Belford Roxo,515239,4
+2017,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,18829,3304110,Porto Real,18829,4
+2022,A09,Diarreia e Gastroenterite,Hídrica,3304110,Porto Real,20373,3304110,Porto Real,20373,4
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,224267,3304300,Rio Bonito,56276,4
+2022,A09,Diarreia e Gastroenterite,Hídrica,3302700,Maricá,197277,3304300,Rio Bonito,56276,4
+2023,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,785867,3304144,Queimados,140523,4
+2020,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,105548,3303609,Paracambi,52683,4
+2024,A90,Dengue,Vetor,3302270,Japeri,102149,3303609,Paracambi,43656,4
+2014,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,227168,3303302,Niterói,495470,4
+2016,A90,Dengue,Vetor,3303500,Nova Iguaçu,797435,3304524,Rio das Ostras,136626,4
+2018,A90,Dengue,Vetor,3303500,Nova Iguaçu,818875,3304144,Queimados,149265,4
+2024,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,179120,3304557,Rio de Janeiro,6729894,4
+2016,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,100562,3303500,Nova Iguaçu,797435,4
+2015,A90,Dengue,Vetor,3302270,Japeri,99863,3300456,Belford Roxo,481127,4
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,229007,3300803,Cachoeiras de Macacu,56290,4
+2020,A90,Dengue,Vetor,3303500,Nova Iguaçu,823302,3304557,Rio de Janeiro,6747815,4
+2020,A90,Dengue,Vetor,3300100,Angra dos Reis,207044,3300100,Angra dos Reis,207044,4
+2018,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,59613,3305802,Teresópolis,180886,4
+2019,A27,Leptospirose,Roedor,3300100,Angra dos Reis,203785,3300100,Angra dos Reis,203785,3
+2024,A27,Leptospirose,Roedor,3301850,Guapimirim,54300,3304557,Rio de Janeiro,6729894,3
+2018,A90,Dengue,Vetor,3300100,Angra dos Reis,200407,3300100,Angra dos Reis,200407,3
+2015,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,56515,3300803,Cachoeiras de Macacu,56290,3
+2020,A90,Dengue,Vetor,3302270,Japeri,105548,3300456,Belford Roxo,513118,3
+2020,A90,Dengue,Vetor,3303500,Nova Iguaçu,823302,3300456,Belford Roxo,513118,3
+2018,A90,Dengue,Vetor,3303500,Nova Iguaçu,818875,3300456,Belford Roxo,508614,3
+2015,A90,Dengue,Vetor,3303500,Nova Iguaçu,807492,3300456,Belford Roxo,481127,3
+2014,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,55626,3304557,Rio de Janeiro,6453682,3
+2016,A90,Dengue,Vetor,3301850,Guapimirim,57105,3300803,Cachoeiras de Macacu,56603,3
+2023,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,167434,3304557,Rio de Janeiro,6211223,3
+2024,A91,Dengue Hemorrágica,Vetor,3304300,Rio Bonito,59113,3304300,Rio Bonito,59113,3
+2022,A91,Dengue Hemorrágica,Vetor,3302270,Japeri,96289,3303609,Paracambi,41375,3
+2015,A90,Dengue,Vetor,3301900,Itaboraí,229007,3302700,Maricá,146549,3
+2022,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,96289,3303609,Paracambi,41375,3
+2019,A09,Diarreia e Gastroenterite,Hídrica,3301900,Itaboraí,240592,3303302,Niterói,513584,3
+2022,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,785867,3302601,Mangaratiba,41220,3
+2017,A90,Dengue,Vetor,3303500,Nova Iguaçu,798647,3304557,Rio de Janeiro,6520266,3
+2019,A91,Dengue Hemorrágica,Vetor,3303500,Nova Iguaçu,821128,3300456,Belford Roxo,510906,3
+2022,L08,Infecções Cutâneas,Outra,3302270,Japeri,96289,3304557,Rio de Janeiro,6211223,3
+2020,B54,Malária,Vetor,3304300,Rio Bonito,60573,3304300,Rio Bonito,60573,2
+2017,A09,Diarreia e Gastroenterite,Hídrica,3302270,Japeri,101237,3303500,Nova Iguaçu,798647,2
+2014,A09,Diarreia e Gastroenterite,Hídrica,3303500,Nova Iguaçu,806177,3304144,Queimados,142709,2
+2023,A09,Diarreia e Gastroenterite,Hídrica,3301850,Guapimirim,51696,3304557,Rio de Janeiro,6211223,2
+2018,A90,Dengue,Vetor,3301900,Itaboraí,238695,3301702,Duque de Caxias,914383,2
+2016,A91,Dengue Hemorrágica,Vetor,3300100,Angra dos Reis,191504,3300100,Angra dos Reis,191504,2

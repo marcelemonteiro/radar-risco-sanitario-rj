@@ -109,15 +109,15 @@ LABEL = {
     "cobertura_residuos_solidos": "Cobertura de Resíduos Sólidos (%)",
     "investimento_per_capita": "Investimento per capita (R$/hab)",
     "disposicao_final_inadequada_rsu": "Disposição Final Inadequada (%)",
-    "cobertura_coleta_seletiva_total": "Coleta Seletiva (%)",
+    "cobertura_coleta_seletiva": "Coleta Seletiva (%)",
     "indice_hidrometracao": "Índice de Hidrometração (%)",
     "indice_macromedicao": "Índice de Macromedição (%)",
     "volume_agua_produzido": "Volume de Água Produzido (m³)",
-    "massa_per_capita_rsu_coletado": "RSU per capita (kg/hab/dia)",
+    "massa_rsu_per_capita": "RSU per capita (kg/hab/dia)",
     "score": "Índice Composto de Saneamento",
-    "populacao_urbana": "População Urbana",
-    "populacao_rural": "População Rural",
-    "area_municipio_km2": "Área (km²)",
+    "populacao_urbana_residente": "População Urbana",
+    "populacao_rural_residente": "População Rural",
+    "area_municipio": "Área (km²)",
 }
 
 META_AGUA = 99.0
@@ -130,8 +130,17 @@ SCORE_COLS = [
 ]
 
 COR_RISCO = {
-    "Adequado": "#16a34a", "Regular": "#ca8a04",
-    "Atenção": "#ea580c", "Crítico": "#dc2626", "Sem dados": "#cbd5e1",
+    "Atendimento adequado": "#16a34a",
+    "Atendimento precário": "#ca8a04",
+    "Déficit de esgotamento sanitário": "#ea580c",
+    "Déficit severo de esgotamento sanitário": "#dc2626",
+    "Déficit de abastecimento de água": "#e11d48",
+    "Déficit crítico - água e esgoto": "#7f1d1d",
+    "Déficit de manejo de resíduos sólidos": "#d97706",
+    "Déficit de manejo de resíduos - contexto rural": "#92400e",
+    "Déficit estrutural de saneamento": "#9333ea",
+    "Déficit estrutural - município rural vulnerável": "#6b21a8",
+    "Sem dados": "#cbd5e1",
 }
 
 MAP_INDICATORS = [
@@ -148,28 +157,16 @@ CLUSTER_FEATURES = [
 ]
 
 CLUSTER_NAMES = {
-    0: "Saneamento avançado",
-    1: "Água adequada, esgoto deficiente",
-    2: "Déficit estrutural urbano",
-    3: "Município rural vulnerável",
+    0: "Atendimento adequado consolidado",
+    1: "Déficit de esgotamento sanitário",
+    2: "Déficit estrutural de saneamento",
+    3: "Município rural com déficit múltiplo",
 }
 
 
 # ---------------------------------------------------------------------------
 # Funções auxiliares
 # ---------------------------------------------------------------------------
-def parse_br(val):
-    if pd.isna(val) or val == "":
-        return None
-    s = str(val).strip().strip('"')
-    if s in ("", " "):
-        return None
-    s = s.replace(".", "").replace(",", ".")
-    try:
-        return float(s)
-    except ValueError:
-        return None
-
 
 def fmt_pop(n, abrev=True):
     if pd.isna(n):
@@ -195,16 +192,62 @@ def calc_score(row):
     return np.mean(vals) if len(vals) >= 2 else np.nan
 
 
-def classificar(s):
-    if pd.isna(s):
+def classificar_saneamento(row):
+    """
+    Classificação baseada na terminologia do PLANSAB (Lei 11.445/2007
+    atualizada pela Lei 14.026/2020 - Marco Legal do Saneamento).
+
+    Limiares de referência:
+    - Água >= 90%: próximo da universalização (meta Marco Legal: 99% até 2033)
+    - Esgoto >= 75%: atendimento adequado urbano (meta Marco Legal: 90% até 2033)
+    - RSU >= 80%: atendimento adequado (PLANSAB)
+    - Água < 60%: sem atendimento ou atendimento precário grave
+    - Esgoto < 30%: déficit severo de esgotamento sanitário
+    """
+    agua = row.get("indice_atendimento_total_agua", np.nan)
+    esgoto = row.get("indice_coleta_esgoto", np.nan)
+    residuos = row.get("cobertura_residuos_solidos", np.nan)
+    pct_urb = row.get("pct_populacao_urbana", np.nan)
+
+    if pd.isna(agua) and pd.isna(esgoto):
         return "Sem dados"
-    if s >= 70:
-        return "Adequado"
-    if s >= 50:
-        return "Regular"
-    if s >= 30:
-        return "Atenção"
-    return "Crítico"
+
+    rural = pd.notna(pct_urb) and pct_urb < 50
+
+    if (pd.notna(agua) and agua >= 90 and
+        pd.notna(esgoto) and esgoto >= 75 and
+        (pd.isna(residuos) or residuos >= 80)):
+        return "Atendimento adequado"
+
+    if (pd.notna(agua) and agua >= 70 and
+        pd.notna(esgoto) and esgoto < 50):
+        if esgoto < 30:
+            return "Déficit severo de esgotamento sanitário"
+        return "Déficit de esgotamento sanitário"
+
+    if pd.notna(agua) and agua < 60:
+        if pd.notna(esgoto) and esgoto < 30:
+            return "Déficit crítico - água e esgoto"
+        return "Déficit de abastecimento de água"
+
+    if (pd.notna(residuos) and residuos < 50 and
+        pd.notna(agua) and agua >= 70 and
+        pd.notna(esgoto) and esgoto >= 50):
+        if rural:
+            return "Déficit de manejo de resíduos - contexto rural"
+        return "Déficit de manejo de resíduos sólidos"
+
+    n_deficit = sum([
+        pd.notna(agua) and agua < 70,
+        pd.notna(esgoto) and esgoto < 50,
+        pd.notna(residuos) and residuos < 50,
+    ])
+    if n_deficit >= 2:
+        if rural:
+            return "Déficit estrutural - município rural vulnerável"
+        return "Déficit estrutural de saneamento"
+
+    return "Atendimento precário"
 
 
 def classificar_porte(pop):
@@ -222,16 +265,75 @@ def classificar_porte(pop):
 # ---------------------------------------------------------------------------
 # Carregamento de dados
 # ---------------------------------------------------------------------------
+RENAME_COLS = {
+    "Município": "nome_municipio",
+    "Sigla UF": "sigla_uf",
+    "População Total Residente": "populacao_total_residente",
+    "População Rural Residente": "populacao_rural_residente",
+    "População Urbana Residente": "populacao_urbana_residente",
+    "População total atendida com abastecimento de água": "populacao_atendida_agua",
+    "População urbana atendida com rede de abastecimento de água": "populacao_urbana_atendida_agua",
+    "Atendimento da população urbana com rede de abastecimento de água": "indice_atendimento_urbano_agua",
+    "Atendimento da população total com rede de abastecimento de água": "indice_atendimento_total_agua",
+    "População total atendida com esgotamento sanitário": "populacao_atendida_esgoto",
+    "População urbana atendida com rede de esgotamento sanitário": "populacao_urbana_atendida_esgoto",
+    "Extensão de rede de distribuição de água": "extensao_rede_agua",
+    "Extensão da rede pública de esgotamento sanitário": "extensao_rede_esgoto",
+    "Quantidade de ligações ativas de água": "ligacoes_ativas_agua",
+    "Quantidade de ligações ativas de esgoto": "ligacoes_ativas_esgoto",
+    "Volume de água produzido": "volume_agua_produzido",
+    "Volume de água tratada em ETAs": "volume_agua_tratada_eta",
+    "Volume de água consumido": "volume_agua_consumido",
+    "Volume de água tratada por simples desinfecção": "volume_agua_desinfeccao",
+    "Volume de água tratada importado": "volume_agua_importado",
+    "Volume de água tratada exportado": "volume_agua_exportado",
+    "Volume de água fluoretada": "volume_agua_fluoretada",
+    "Extensão de rede de distribuição de água.1": "extensao_rede_agua_2",
+    "Volume total de esgoto coletado": "volume_esgoto_coletado",
+    "Volume total de esgoto tratado ": "volume_esgoto_tratado",
+    "Volume total de esgoto bruto exportado ": "volume_esgoto_exportado",
+    "Volume total de esgoto bruto importado para tratamento ": "volume_esgoto_importado",
+    "Extensão da rede pública de esgotamento sanitário.1": "extensao_rede_esgoto_2",
+    "Atendimento da população urbana com rede coletora de esgoto": "indice_coleta_esgoto",
+    "Esgoto tratado referido ao esgoto coletado": "indice_tratamento_esgoto",
+    "Perda na Distribuição de Água": "indice_perda_distribuicao_agua",
+    "Índice de Macromedição": "indice_macromedicao",
+    "Índice de Hidrometração": "indice_hidrometracao",
+    "Investimento Total (prestador + município + estado)": "investimento_total",
+    "Investimento per Capita": "investimento_per_capita",
+    "Quantidade de domicílios totais": "domicilios_totais",
+    "Quantidade de domicílios urbanos": "domicilios_urbanos",
+    "Quantidade de domicílios rurais": "domicilios_rurais",
+    "Área do município": "area_municipio",
+    "Cobertura da população total com coleta de resíduos sólidos domiciliares": "cobertura_residuos_solidos",
+    "Cobertura da população urbana com coleta de resíduos sólidos domiciliares": "cobertura_residuos_urbana",
+    "Cobertura da população rural com coleta de resíduos sólidos domiciliares": "cobertura_residuos_rural",
+    "Cobertura da população urbana com coleta direta de resíduos sólidos": "cobertura_residuos_urbana_direta",
+    "Cobertura da população total com coleta seletiva de resíduos sólidos": "cobertura_coleta_seletiva",
+    "Cobertura da população urbana com coleta seletiva direta de resíduos sólidos": "cobertura_coleta_seletiva_urbana",
+    "Incidência do transbordo de resíduos sólidos urbanos": "incidencia_transbordo_rsu",
+    "Capacidade média utilizada dos veículos motorizados na coleta de RSU": "capacidade_veiculos_coleta",
+    "Quantidade média de pontos de entrega voluntária (PEV) de recicláveis por mil habitantes": "pev_por_mil_hab",
+    "Massa média per capita de resíduos sólidos urbanos coletados": "massa_rsu_per_capita",
+    "Massa média per capita de resíduos sólidos domiciliares coletados": "massa_rsd_per_capita",
+    "Massa média per capita de resíduos de limpeza urbana coletados": "massa_limpeza_urbana_per_capita",
+    "Massa média per capita de resíduos domiciliares coletados na coleta seletiva": "massa_coleta_seletiva_per_capita",
+    "Massa média per capita de resíduos domiciliares secos e orgânicos recuperados": "massa_recuperados_per_capita",
+    "Desempenho da coleta seletiva": "desempenho_coleta_seletiva",
+    "Disposição final inadequada de resíduos sólidos urbanos": "disposicao_final_inadequada_rsu",
+    "Recuperação de recicláveis secos em relação à composição gravimétrica": "recuperacao_secos_gravimetria",
+    "Recuperação de recicláveis orgânicos em relação à composição gravimétrica": "recuperacao_organicos_gravimetria",
+    "Recuperação de recicláveis secos e orgânicos em relação ao total coletado": "recuperacao_total_coletado",
+    "Recuperação de recicláveis secos em relação ao total coletado": "recuperacao_secos_total",
+    "Recuperação de recicláveis orgânicos em relação ao total coletado": "recuperacao_organicos_total",
+}
+
+
 @st.cache_data
 def load_saneamento():
-    path = "data/processed/dados_saneamento_snis_sinisa.csv"
-    hdr = pd.read_csv(path, nrows=0, skiprows=[0, 1], encoding="utf-8",
-                       keep_default_na=False).columns.tolist()
-    df = pd.read_csv(path, skiprows=[0, 1, 2], header=None, dtype=str, encoding="utf-8")
-    df.columns = hdr
-    text_cols = {"ano", "id_municipio", "nome_municipio", "sigla_uf"}
-    for c in [c for c in df.columns if c not in text_cols]:
-        df[c] = df[c].apply(parse_br)
+    path = "data/processed/snis_sinisa_merge_ibge_populacao.csv"
+    df = pd.read_csv(path, encoding="utf-8")
+    df.rename(columns=RENAME_COLS, inplace=True)
     df["ano"] = df["ano"].astype(int)
     df["id_municipio"] = df["id_municipio"].astype(str).str.strip()
     return df.sort_values(["nome_municipio", "ano"]).reset_index(drop=True)
@@ -249,22 +351,22 @@ def load_geo():
 def enrich_df(df_atual):
     """Adiciona colunas calculadas ao dataframe do ano atual."""
     df_atual["score"] = df_atual.apply(calc_score, axis=1)
-    df_atual["risco"] = df_atual["score"].apply(classificar)
     df_atual["porte"] = df_atual["populacao_total_residente"].apply(classificar_porte)
 
-    pop_urb = df_atual["populacao_urbana"]
+    pop_urb = df_atual["populacao_urbana_residente"]
     pop_tot = df_atual["populacao_total_residente"]
     df_atual["pct_populacao_urbana"] = np.where(
         pop_tot.notna() & (pop_tot > 0),
         (pop_urb / pop_tot * 100).round(1),
         np.nan,
     )
-    area = df_atual["area_municipio_km2"]
+    area = df_atual["area_municipio"]
     df_atual["densidade_demografica"] = np.where(
         area.notna() & (area > 0),
         (pop_tot / area).round(1),
         np.nan,
     )
+    df_atual["risco"] = df_atual.apply(classificar_saneamento, axis=1)
     return df_atual
 
 
@@ -283,7 +385,7 @@ def render_hero(df_atual, ultimo_ano):
         if pd.notna(r.get("indice_coleta_esgoto")) and pd.notna(r.get("populacao_total_residente")) else 0,
         axis=1).sum()
 
-    n_criticos = (df_atual["risco"] == "Crítico").sum()
+    n_deficit_critico = (df_atual["risco"].str.contains("Déficit", na=False)).sum()
 
     st.markdown(f"""
     <div class="hero">
@@ -295,7 +397,7 @@ def render_hero(df_atual, ultimo_ano):
             <div class="bn-card"><div class="number">{esgoto:.1f}%</div><div class="label">Coleta de esgoto</div></div>
             <div class="bn-card"><div class="number">{perda:.0f}%</div><div class="label">Perda na distribuição</div></div>
             <div class="bn-card"><div class="number" style="color:#fca5a5">{fmt_pop(pop_sem_esgoto)}</div><div class="label">Sem coleta de esgoto</div></div>
-            <div class="bn-card"><div class="number" style="color:#fca5a5">{n_criticos}</div><div class="label">Municípios em situação crítica</div></div>
+            <div class="bn-card"><div class="number" style="color:#fca5a5">{n_deficit_critico}</div><div class="label">Municípios com déficit</div></div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -306,14 +408,14 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
     t = container or st
     mun = row.get("nome_municipio", "")
     score = row.get("score", np.nan)
-    risco = row.get("risco", classificar(score))
+    risco = row.get("risco", "Sem dados")
     cor = COR_RISCO.get(risco, "#cbd5e1")
     porte = row.get("porte", "")
 
     pop = row.get("populacao_total_residente", np.nan)
-    pop_urb = row.get("populacao_urbana", np.nan)
-    pop_rur = row.get("populacao_rural", np.nan)
-    area = row.get("area_municipio_km2", np.nan)
+    pop_urb = row.get("populacao_urbana_residente", np.nan)
+    pop_rur = row.get("populacao_rural_residente", np.nan)
+    area = row.get("area_municipio", np.nan)
     dens = row.get("densidade_demografica", np.nan)
     agua = row.get("indice_atendimento_total_agua", np.nan)
     esgoto = row.get("indice_coleta_esgoto", np.nan)
@@ -445,11 +547,11 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
     if invertido:
         idx_maior = df_mapa[indicador].idxmax()
         idx_menor = df_mapa[indicador].idxmin()
-        n_criticos = (df_mapa[indicador] > 50).sum()
+        n_abaixo_meta = (df_mapa[indicador] > 50).sum()
     else:
         idx_maior = df_mapa[indicador].idxmax()
         idx_menor = df_mapa[indicador].idxmin()
-        n_criticos = (df_mapa[indicador] < 50).sum()
+        n_abaixo_meta = (df_mapa[indicador] < 50).sum()
 
     mais_elevado = df_mapa.loc[idx_maior]
     menos_elevado = df_mapa.loc[idx_menor]
@@ -494,7 +596,7 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
     <span class="metric-mini"><span class="val">{media:.1f}</span><span class="lbl">Média</span></span>
     <span class="metric-mini"><span class="val">{mediana:.1f}</span><span class="lbl">Mediana</span></span><br>
     <span class="metric-mini"><span class="val">{std:.1f}</span><span class="lbl">Desvio padrão</span></span>
-    <span class="metric-mini"><span class="val">{n_criticos}</span><span class="lbl">Em situação crítica</span></span>
+    <span class="metric-mini"><span class="val">{n_abaixo_meta}</span><span class="lbl">Abaixo de 50%</span></span>
     <br><br>
     <strong>Maior índice:</strong> {mais_elevado['nome_municipio']} ({mais_elevado[indicador]:.1f})<br>
     <strong>Menor índice:</strong> {menos_elevado['nome_municipio']} ({menos_elevado[indicador]:.1f})<br><br>
@@ -530,26 +632,32 @@ def render_ranking(df_atual, ultimo_ano):
     n = len(df_rank)
     cnt = df_rank["risco"].value_counts()
 
-    c1, c2, c3, c4 = st.columns(4)
-    for col, risco in zip([c1, c2, c3, c4], ["Adequado", "Regular", "Atenção", "Crítico"]):
-        v = cnt.get(risco, 0)
-        cor_r = COR_RISCO[risco]
+    n_adequado = cnt.get("Atendimento adequado", 0)
+    n_precario = cnt.get("Atendimento precário", 0)
+    n_deficit = sum(v for k, v in cnt.items() if "Déficit" in k)
+
+    c1, c2, c3 = st.columns(3)
+    for col, (lbl, val, cor) in zip([c1, c2, c3], [
+        ("Atendimento adequado", n_adequado, "#16a34a"),
+        ("Atendimento precário", n_precario, "#ca8a04"),
+        ("Com algum déficit", n_deficit, "#dc2626"),
+    ]):
         col.markdown(f"""
-        <div style="text-align:center;padding:.7rem;border-radius:10px;background:{cor_r}12;border:1px solid {cor_r}30">
-            <div style="font-size:2rem;font-weight:900;color:{cor_r}">{v}</div>
-            <div style="font-size:.72rem;color:#64748b;text-transform:uppercase">{risco}</div>
+        <div style="text-align:center;padding:.7rem;border-radius:10px;background:{cor}12;border:1px solid {cor}30">
+            <div style="font-size:2rem;font-weight:900;color:{cor}">{val}</div>
+            <div style="font-size:.72rem;color:#64748b;text-transform:uppercase">{lbl}</div>
         </div>
         """, unsafe_allow_html=True)
 
     st.markdown(f"""
     <div class="insight">
         <strong>Metodologia:</strong> O índice composto é calculado como a <strong>média aritmética</strong> de 4 indicadores:
-        atendimento de água, coleta de esgoto, tratamento de esgoto e cobertura de resíduos sólidos (escala 0–100).
-        Municípios com dados disponíveis em pelo menos 2 dos 4 indicadores são incluídos.
-        Dos <strong>{n} municípios</strong> avaliados em {ultimo_ano},
-        <strong>{cnt.get("Crítico", 0)}</strong> estão em situação
-        <strong style="color:#dc2626">crítica</strong> (índice &lt; 30) e
-        <strong>{cnt.get("Adequado", 0)}</strong> são <strong style="color:#16a34a">adequados</strong> (índice ≥ 70).
+        atendimento de água, coleta de esgoto, tratamento de esgoto e cobertura de resíduos sólidos (escala 0-100).
+        Municípios com dados disponíveis em pelo menos 2 dos 4 indicadores são incluídos.<br><br>
+        <strong>Classificação (PLANSAB):</strong> Dos <strong>{n} municípios</strong> avaliados em {ultimo_ano},
+        <strong>{n_adequado}</strong> têm <strong style="color:#16a34a">atendimento adequado</strong> e
+        <strong>{n_deficit}</strong> apresentam algum tipo de <strong style="color:#dc2626">déficit</strong>
+        (esgotamento sanitário, abastecimento de água, resíduos sólidos ou estrutural).
     </div>
     """, unsafe_allow_html=True)
 
@@ -577,10 +685,10 @@ def render_ranking(df_atual, ultimo_ano):
                           margin=dict(l=0, r=10, t=10, b=0))
         st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch", key="rank_maior")
 
-    criticos = df_vis[df_vis["risco"] == "Crítico"]
-    if not criticos.empty:
-        nomes = ", ".join(sorted(criticos["nome_municipio"].tolist()))
-        st.markdown(f'<div class="insight alert"><strong>Municípios em situação crítica:</strong> {nomes}</div>',
+    com_deficit = df_vis[df_vis["risco"].str.contains("Déficit", na=False)]
+    if not com_deficit.empty:
+        nomes = ", ".join(sorted(com_deficit.nsmallest(10, "score")["nome_municipio"].tolist()))
+        st.markdown(f'<div class="insight alert"><strong>Municípios com déficit mais severo:</strong> {nomes}</div>',
                     unsafe_allow_html=True)
 
 
