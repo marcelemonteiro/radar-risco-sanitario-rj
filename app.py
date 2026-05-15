@@ -12,7 +12,7 @@ from sklearn.metrics import silhouette_score
 
 st.set_page_config(
     page_title="Radar Risco Sanitário - RJ",
-    page_icon="",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -772,10 +772,13 @@ enquanto **{menos_perda['nome_municipio']}** registra a menor ({menos_perda['ind
             labels={"investimento_per_capita": "Investimento per capita (R$/hab)",
                     "indice_perda_distribuicao_agua": "Perda na Distribuição (%)",
                     "populacao_total_residente": "População"})
+        fig.add_hrect(y0=25, y1=d_both["indice_perda_distribuicao_agua"].max() + 5,
+                      fillcolor="#dc2626", opacity=0.06, line_width=0)
+        fig.add_hline(y=25, line_dash="solid", line_color="#dc2626", line_width=1.5,
+                      annotation_text="Limite aceitável 25% (ANA/SNIS)", annotation_font_size=9,
+                      annotation_position="top left")
         fig.update_layout(height=450, margin=dict(l=10, r=10, t=10, b=10),
                           coloraxis_colorbar=dict(title="Perda %", thickness=12, len=0.5))
-        fig.add_hline(y=40, line_dash="dash", line_color="#dc2626", line_width=1,
-                      annotation_text="Patamar elevado 40%", annotation_font_size=9)
         col_g.plotly_chart(fig, config={"displayModeBar": False}, width="stretch", key="perda_scatter")
     else:
         fig = px.bar(d.nlargest(25, "indice_perda_distribuicao_agua"),
@@ -787,6 +790,22 @@ enquanto **{menos_perda['nome_municipio']}** registra a menor ({menos_perda['ind
 
     col_g.markdown(f'<div class="source">Fonte: SNIS ({ultimo_ano}). Tamanho das bolhas proporcional à população.</div>',
                    unsafe_allow_html=True)
+
+    acima_25 = (d["indice_perda_distribuicao_agua"] > 25).sum()
+    vol_produzido = d["volume_agua_produzido"].sum() if "volume_agua_produzido" in d.columns else 0
+    excesso_perda = (d["indice_perda_distribuicao_agua"].mean() - 25) / 100
+    vol_perdido_excesso = vol_produzido * excesso_perda if excesso_perda > 0 else 0
+    consumo_per_capita_dia = 0.15
+    pop_equiv = vol_perdido_excesso / (consumo_per_capita_dia * 365) if consumo_per_capita_dia > 0 else 0
+
+    st.markdown(f"""
+    <div class="insight alert">
+        <strong>{acima_25} municípios</strong> estão acima do limite de 25% de perda (referência ANA/SNIS), que indica
+        ineficiência operacional. Com perda média de <strong>{media_perda:.0f}%</strong>, o volume desperdiçado acima
+        do aceitável equivale ao abastecimento de aproximadamente
+        <strong>{pop_equiv/1e6:.1f} milhões de pessoas</strong>.
+    </div>
+    """, unsafe_allow_html=True)
 
     hist = df[df["ano"].between(2014, ultimo_ano)]
     stats = hist.groupby("ano")["indice_perda_distribuicao_agua"].mean().dropna()
@@ -817,7 +836,7 @@ def render_evolucao(df, ultimo_ano):
         ("indice_atendimento_total_agua", "Atendimento de Água", "#3b82f6", META_AGUA),
         ("indice_coleta_esgoto", "Coleta de Esgoto", "#f97316", META_ESGOTO),
         ("indice_tratamento_esgoto", "Tratamento de Esgoto", "#22c55e", None),
-        ("indice_perda_distribuicao_agua", "Perda na Distribuição", "#ef4444", None),
+        ("indice_perda_distribuicao_agua", "Perda na Distribuição", "#ef4444", 25),
     ]
     cols = st.columns(2)
     df_hist = df[df["ano"].between(2014, ultimo_ano)]
@@ -839,8 +858,9 @@ def render_evolucao(df, ultimo_ano):
         fig.add_trace(go.Scatter(x=stats.index, y=stats["median"], mode="lines",
                                  line=dict(color="#94a3b8", width=1, dash="dot"), name="Mediana"))
         if meta:
+            label_meta = f"Limite aceitável: {meta}%" if "perda" in col_name else f"Meta {ANO_META}: {meta}%"
             fig.add_hline(y=meta, line_dash="dash", line_color="#dc2626", line_width=1,
-                          annotation_text=f"Meta {ANO_META}: {meta}%", annotation_font_size=9)
+                          annotation_text=label_meta, annotation_font_size=9)
         fig.update_layout(title=dict(text=titulo, font=dict(size=13, color="#0c1d36")),
                           height=300, margin=dict(l=10, r=10, t=40, b=10),
                           yaxis=dict(range=[-5, 110] if "perda" not in col_name else None),
@@ -865,7 +885,9 @@ def render_evolucao(df, ultimo_ano):
     n_estagnados = 0
     for _, g in df_hist[["ano", "id_municipio", "indice_coleta_esgoto"]].dropna().groupby("id_municipio"):
         if len(g) >= 3:
-            coef = np.polyfit(g["ano"].values.astype(float), g["indice_coleta_esgoto"].values, 1)
+            anos_g = g["ano"].values.astype(float)
+            pesos_g = np.exp(0.3 * (anos_g - anos_g.min()))
+            coef = np.polyfit(anos_g, g["indice_coleta_esgoto"].values, 1, w=pesos_g)
             if coef[0] <= 0:
                 n_estagnados += 1
 
@@ -888,10 +910,11 @@ def render_marco_legal(df, ultimo_ano):
     st.markdown('<div class="section-title">Projeção para o Marco Legal 2033</div>', unsafe_allow_html=True)
     st.markdown(f"""
     <div class="insight">
-        <strong>Metodologia:</strong> Para cada município, é calculada a <strong>tendência linear</strong>
-        (regressão de 1º grau) com base nos dados dos últimos 10 anos (2014-{ultimo_ano}).
-        A projeção indica qual seria o valor do indicador em {ANO_META} se a tendência atual se mantiver.
-        Municípios em <strong style="color:#7c3aed">retrocesso</strong> apresentam tendência de queda.
+        <strong>Metodologia:</strong> Para cada município, é calculada a <strong>tendência linear ponderada</strong>
+        (Weighted Least Squares) com base nos dados de 2014 a {ultimo_ano}.
+        Anos recentes recebem peso exponencialmente maior, priorizando a trajetória mais atual do município.
+        A projeção indica qual seria o valor do indicador em {ANO_META} se a tendência recente se mantiver.
+        Municípios em <strong style="color:#7c3aed">retrocesso</strong> apresentam tendência de queda nos últimos anos.
     </div>
     """, unsafe_allow_html=True)
 
@@ -906,7 +929,9 @@ def render_marco_legal(df, ultimo_ano):
         if len(g) < 3:
             continue
         nome = g["nome_municipio"].iloc[0]
-        coef = np.polyfit(g["ano"].values.astype(float), g[indicador].values, 1)
+        anos_m = g["ano"].values.astype(float)
+        pesos_m = np.exp(0.3 * (anos_m - anos_m.min()))
+        coef = np.polyfit(anos_m, g[indicador].values, 1, w=pesos_m)
         taxa = coef[0]
         atual = float(np.polyval(coef, ultimo_ano))
         proj = float(np.polyval(coef, ANO_META))
@@ -967,7 +992,7 @@ def render_marco_legal(df, ultimo_ano):
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("Ver tabela completa", icon=""):
+    with st.expander("Ver tabela completa"):
         st.dataframe(df_p.sort_values("Projeção 2033 (%)"), hide_index=True, width="stretch")
 
 
@@ -1146,7 +1171,7 @@ def render_clusters(df_atual, geojson, ultimo_ano):
     for cid in sorted(df_cl["cluster"].unique()):
         nome_grupo = cluster_labels.get(cid, f"Grupo {cid}")
         muns = sorted(df_cl[df_cl["cluster"] == cid]["nome_municipio"].tolist())
-        with st.expander(f"{nome_grupo} ({len(muns)} municípios)", icon="📌"):
+        with st.expander(f"{nome_grupo} ({len(muns)} municípios)"):
             st.write(", ".join(muns))
 
 
