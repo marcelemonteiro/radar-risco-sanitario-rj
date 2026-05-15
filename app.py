@@ -12,7 +12,7 @@ from sklearn.metrics import silhouette_score
 
 st.set_page_config(
     page_title="Radar Risco Sanitário - RJ",
-    page_icon="🚰",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -47,18 +47,18 @@ st.markdown("""
     .bn-card .label { font-size: .72rem; opacity: .65; margin-top: .25rem; text-transform: uppercase; letter-spacing: .3px; }
     .section-title {
         font-size: 1.15rem; font-weight: 700; color: #0c1d36;
-        border-left: 4px solid #2196F3; padding-left: .75rem;
+        padding-left: .75rem;
         margin: 2rem 0 .75rem;
     }
     .section-subtitle { font-size: .85rem; color: #64748b; margin: -.5rem 0 1rem 1rem; }
     .insight {
         background: #f0f4f8; border-radius: 10px;
         padding: 1rem 1.2rem; margin: .75rem 0; font-size: .86rem;
-        line-height: 1.6; color: #334155; border-left: 4px solid #2196F3;
+        line-height: 1.6; color: #334155;
     }
-    .insight.alert { background: #fef2f2; border-left-color: #dc2626; }
-    .insight.warn  { background: #fffbeb; border-left-color: #d97706; }
-    .insight.ok    { background: #f0fdf4; border-left-color: #16a34a; }
+    .insight.alert { background: #fef2f2; }
+    .insight.warn  { background: #fffbeb; }
+    .insight.ok    { background: #f0fdf4; }
     .insight strong { color: #0c1d36; }
     .profile-header {
         background: linear-gradient(135deg, #0c1d36, #1a5276);
@@ -90,6 +90,7 @@ st.markdown("""
     .footer h4 { color: #fff; margin: 0 0 .5rem; font-size: .9rem; }
     #MainMenu, footer, header { visibility: hidden; }
     .stDeployButton { display: none; }
+    [data-testid="stExpander"] details summary span[data-testid="stMarkdownContainer"] p { display: inline; }
     .stTabs [data-baseweb="tab-list"] { gap: 0; }
     .stTabs [data-baseweb="tab"] { font-size: .82rem; font-weight: 600; padding: .6rem 1.2rem; }
     .metric-mini { display: inline-flex; align-items: baseline; gap: .4rem; margin-right: 1.5rem; margin-bottom: .5rem; }
@@ -694,9 +695,7 @@ def render_ranking(df_atual, ultimo_ano):
 
 # ── Descompasso Água vs Esgoto ──
 def render_gap(df_atual, ultimo_ano):
-    st.markdown('<div class="section-title">Descompasso entre Água e Esgoto</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="section-subtitle">Diferença entre cobertura de abastecimento de água e coleta de esgoto em {ultimo_ano}</div>',
-                unsafe_allow_html=True)
+    st.markdown('<div class="section-title">Diferença entre cobertura de abastecimento de água e coleta de esgoto em 2024</div>', unsafe_allow_html=True)
 
     df_gap = df_atual.dropna(subset=["indice_atendimento_total_agua", "indice_coleta_esgoto"]).copy()
     df_gap["gap"] = df_gap["indice_atendimento_total_agua"] - df_gap["indice_coleta_esgoto"]
@@ -760,8 +759,7 @@ Em {ultimo_ano}, a perda média no estado do RJ foi de **{media_perda:.1f}%**.
 O município com maior perda é **{mais_perda['nome_municipio']}** ({mais_perda['indice_perda_distribuicao_agua']:.0f}%),
 enquanto **{menos_perda['nome_municipio']}** registra a menor ({menos_perda['indice_perda_distribuicao_agua']:.0f}%).
 
-**{acima_40} municípios** perdem mais de 40% da água tratada -
-um patamar considerado elevado pelo próprio SNIS.
+**{acima_40} municípios** perdem mais de 40% da água tratada.
     """)
 
     d_both = d.dropna(subset=["investimento_per_capita", "indice_perda_distribuicao_agua"])
@@ -854,13 +852,33 @@ def render_evolucao(df, ultimo_ano):
                   df_hist[df_hist["ano"] == 2014]["indice_atendimento_total_agua"].mean())
     delta_esgoto = (df_hist[df_hist["ano"] == ultimo_ano]["indice_coleta_esgoto"].mean() -
                     df_hist[df_hist["ano"] == 2014]["indice_coleta_esgoto"].mean())
+    n_anos = ultimo_ano - 2014
+    ritmo_agua = abs(delta_agua) / n_anos if n_anos > 0 else 0
+    ritmo_esgoto = abs(delta_esgoto) / n_anos if n_anos > 0 else 0
+
+    media_agua_atual = df_hist[df_hist["ano"] == ultimo_ano]["indice_atendimento_total_agua"].mean()
+    media_esgoto_atual = df_hist[df_hist["ano"] == ultimo_ano]["indice_coleta_esgoto"].mean()
+    necessario_agua = (99 - media_agua_atual) / (2033 - ultimo_ano) if (2033 - ultimo_ano) > 0 else 0
+    necessario_esgoto = (90 - media_esgoto_atual) / (2033 - ultimo_ano) if (2033 - ultimo_ano) > 0 else 0
+    fator_insuf = necessario_esgoto / ritmo_esgoto if ritmo_esgoto > 0 else 0
+
+    n_estagnados = 0
+    for _, g in df_hist[["ano", "id_municipio", "indice_coleta_esgoto"]].dropna().groupby("id_municipio"):
+        if len(g) >= 3:
+            coef = np.polyfit(g["ano"].values.astype(float), g["indice_coleta_esgoto"].values, 1)
+            if coef[0] <= 0:
+                n_estagnados += 1
+
     st.markdown(f"""
     <div class="insight">
-        Entre 2014 e {ultimo_ano}, o atendimento médio de água variou
-        <strong>{abs(delta_agua):.1f} pp</strong> ({"avanço" if delta_agua > 0 else "redução"}),
-        enquanto a coleta de esgoto variou <strong>{abs(delta_esgoto):.1f} pp</strong>
-        ({"avanço" if delta_esgoto > 0 else "redução"}).
-        {"<br><strong>O ritmo atual é insuficiente para atingir as metas do Marco Legal até 2033.</strong>" if abs(delta_esgoto) < 5 else ""}
+        Em {n_anos} anos, a cobertura média de água avançou <strong>{abs(delta_agua):.1f} pontos percentuais</strong>
+        e a coleta de esgoto apenas <strong>{abs(delta_esgoto):.1f} pp</strong> entre os municípios do RJ
+        - menos de meio ponto por ano.
+        Para cumprir o Marco Legal até 2033, seriam necessários avanços médios de
+        <strong>~{necessario_agua:.1f} pp/ano</strong> em água e <strong>~{necessario_esgoto:.1f} pp/ano</strong> em esgoto.
+        O ritmo atual é <strong>{fator_insuf:.0f}x insuficiente</strong> para o esgoto.
+        Dos 92 municípios, <strong>{n_estagnados}</strong> estão em retrocesso ou estagnados em coleta de esgoto
+        - sem reversão de trajetória, descumprirão a lei.
     </div>
     """, unsafe_allow_html=True)
 
@@ -913,25 +931,14 @@ def render_marco_legal(df, ultimo_ano):
     cor_st = {"Já atingiu": "#16a34a", "No prazo": "#2563eb",
               "Não atingirá": "#dc2626", "Em retrocesso": "#7c3aed"}
 
-    cc = st.columns(4)
-    for col, status in zip(cc, ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]):
-        n = (df_p["Status"] == status).sum()
-        c = cor_st[status]
-        col.markdown(f"""
-        <div style="text-align:center;padding:.6rem;border-radius:10px;background:{c}10;border:1px solid {c}25">
-            <div style="font-size:1.8rem;font-weight:900;color:{c}">{n}</div>
-            <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">{status}</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    status_list = ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]
-    for status in status_list:
+    def _render_marco_chart(status, container):
         df_s = df_p[df_p["Status"] == status].sort_values("Projeção 2033 (%)")
         if df_s.empty:
-            continue
+            container.info(f"Nenhum município em \"{status}\"")
+            return
         cor = cor_st[status]
-        st.markdown(f'<div style="margin-top:1.2rem;font-weight:700;color:{cor}">{status} ({len(df_s)} municípios)</div>',
-                    unsafe_allow_html=True)
+        container.markdown(f'<div style="margin-top:.5rem;font-weight:700;color:{cor}">{status} ({len(df_s)})</div>',
+                           unsafe_allow_html=True)
         fig = px.bar(df_s, x="Projeção 2033 (%)", y="Município",
                      orientation="h",
                      height=max(200, len(df_s) * 22))
@@ -939,8 +946,16 @@ def render_marco_legal(df, ultimo_ano):
         fig.add_vline(x=meta, line_dash="dash", line_color="#dc2626",
                       annotation_text=f"Meta {meta}%", annotation_font_size=9)
         fig.update_layout(margin=dict(l=0, r=10, t=10, b=10), showlegend=False)
-        st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
-                        key=f"marco_{indicador}_{status}")
+        container.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
+                               key=f"marco_{indicador}_{status}")
+
+    col_a, col_b = st.columns(2)
+    _render_marco_chart("Já atingiu", col_a)
+    _render_marco_chart("No prazo", col_b)
+
+    col_c, col_d = st.columns(2)
+    _render_marco_chart("Não atingirá", col_c)
+    _render_marco_chart("Em retrocesso", col_d)
 
     nao = df_p[df_p["Status"].isin(["Não atingirá", "Em retrocesso"])]
     if not nao.empty:
@@ -952,7 +967,7 @@ def render_marco_legal(df, ultimo_ano):
         </div>
         """, unsafe_allow_html=True)
 
-    with st.expander("Ver tabela completa"):
+    with st.expander("Ver tabela completa", icon=""):
         st.dataframe(df_p.sort_values("Projeção 2033 (%)"), hide_index=True, width="stretch")
 
 
@@ -1006,19 +1021,30 @@ def compute_clusters(df_atual):
 
 
 def _nome_cluster(profile_row, cluster_id):
-    """Nomeia o cluster com base no perfil médio."""
+    """
+    Nomeia o cluster com base no perfil médio.
+    Terminologia PLANSAB (Lei 11.445/2007, atualizada pela Lei 14.026/2020).
+    """
     agua = profile_row.get("indice_atendimento_total_agua", 0)
     esgoto = profile_row.get("indice_coleta_esgoto", 0)
-    pct_urb = profile_row.get("pct_populacao_urbana", 50)
     residuos = profile_row.get("cobertura_residuos_solidos", 0)
+    pct_urb = profile_row.get("pct_populacao_urbana", 50)
+    rural = pct_urb < 50
 
-    if agua > 70 and esgoto > 60 and residuos > 60:
-        return "Saneamento avançado"
-    if agua > 60 and esgoto < 40:
-        return "Água adequada, esgoto deficiente"
-    if pct_urb < 60:
-        return "Município rural vulnerável"
-    return "Déficit estrutural"
+    if agua >= 90 and esgoto >= 75 and residuos >= 80:
+        return "Atendimento adequado consolidado"
+    if agua >= 70 and esgoto < 50:
+        if esgoto < 30:
+            return "Déficit severo de esgotamento sanitário"
+        return "Déficit de esgotamento sanitário"
+    if agua < 60:
+        return "Déficit de abastecimento de água"
+    n_deficit = sum([agua < 70, esgoto < 50, residuos < 50])
+    if n_deficit >= 2:
+        if rural:
+            return "Déficit estrutural - município rural vulnerável"
+        return "Déficit estrutural de saneamento"
+    return "Atendimento precário"
 
 
 def render_clusters(df_atual, geojson, ultimo_ano):
@@ -1120,7 +1146,7 @@ def render_clusters(df_atual, geojson, ultimo_ano):
     for cid in sorted(df_cl["cluster"].unique()):
         nome_grupo = cluster_labels.get(cid, f"Grupo {cid}")
         muns = sorted(df_cl[df_cl["cluster"] == cid]["nome_municipio"].tolist())
-        with st.expander(f"{nome_grupo} ({len(muns)} municípios)"):
+        with st.expander(f"{nome_grupo} ({len(muns)} municípios)", icon="📌"):
             st.write(", ".join(muns))
 
 

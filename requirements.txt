@@ -1,5 +1,6 @@
 streamlit
 pandas
+numpy
 plotly
 unidecode
 openpyxl
@@ -10,4 +11,3 @@ matplotlib
 seaborn
 scikit-learn
 statsmodels
-pysus
