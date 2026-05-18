@@ -10,4 +10,6 @@
 .env.development
 .env.test
 .env.production
-/regras
+/regras__pycache__/
+*.pyc
+__pycache__/
