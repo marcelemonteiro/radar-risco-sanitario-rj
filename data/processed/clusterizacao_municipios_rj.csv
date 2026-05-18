@@ -1,90 +1,90 @@
 id_municipio,nome_municipio,cluster,grupo,silhueta,indice_atendimento_total_agua,indice_coleta_esgoto,cobertura_residuos_solidos,disposicao_final_inadequada_rsu,pct_populacao_urbana,indice_perda_distribuicao_agua
-3300936,Carapebus,0,Déficit estrutural,0.30783294134599815,28.23,18.35,100.0,0.0,81.8,25.08
-3301900,Itaboraí,0,Déficit estrutural,0.3115340008494303,31.92,8.0,100.0,0.0,99.0,78.56
-3300100,Angra dos Reis,1,Saneamento avançado,0.47965279245861564,92.0,64.19,100.0,0.0,97.7,21.27
-3300159,Aperibé,1,Saneamento avançado,0.28444679156576524,100.0,54.0,100.0,0.0,91.8,40.56
-3300209,Araruama,1,Saneamento avançado,0.6223887111661597,100.0,78.0,100.0,0.0,96.0,22.15
-3300225,Areal,1,Saneamento avançado,0.5295896938739452,100.0,72.365,100.0,0.0,94.0,8.74
-3300233,Armação dos Búzios,1,Saneamento avançado,0.5547535414949288,98.0,90.0,100.0,0.0,100.0,43.9
-3300258,Arraial do Cabo,1,Saneamento avançado,0.6093179909621834,98.0,90.0,100.0,0.0,100.0,37.59
-3300407,Barra Mansa,1,Saneamento avançado,0.27342980286685664,77.54,80.76,100.0,0.0,98.9,46.74
-3300308,Barra do Piraí,1,Saneamento avançado,0.5414619805089178,97.88,69.83,100.0,0.0,97.3,15.82
-3300506,Bom Jardim,1,Saneamento avançado,0.44559747378448855,89.49,72.365,100.0,0.0,77.5,21.75
-3301009,Campos dos Goytacazes,1,Saneamento avançado,0.6145668375375141,99.9,96.17,100.0,0.0,93.6,33.64
-3301306,Casimiro de Abreu,1,Saneamento avançado,0.28514168685944435,97.88,53.94,100.0,0.0,94.8,39.35
-3300951,Comendador Levy Gasparian,1,Saneamento avançado,0.48332211003376596,100.0,100.0,96.89,0.0,96.9,8.47
-3301405,Conceição de Macabu,1,Saneamento avançado,0.16868390855903612,100.0,54.99,91.87,0.0,90.1,37.33
-3301876,Iguaba Grande,1,Saneamento avançado,0.47127347535223624,98.0,90.0,100.0,0.0,99.7,50.77
-3302056,Italva,1,Saneamento avançado,0.2708832605170254,100.0,92.99,100.0,0.0,77.7,62.62
-3302205,Itaperuna,1,Saneamento avançado,0.38680806040969307,87.35,94.48,94.25,0.0,94.2,42.28
-3302304,Laje do Muriaé,1,Saneamento avançado,0.32578931354710927,100.0,100.0,95.37,0.0,76.9,28.24
-3302403,Macaé,1,Saneamento avançado,0.6338326712266443,93.08,85.63,100.0,0.0,97.3,25.19
-3302601,Mangaratiba,1,Saneamento avançado,0.5473085964811782,87.45,72.365,100.0,0.0,94.0,18.82
-3303005,Miracema,1,Saneamento avançado,0.33097246229585986,100.0,72.365,93.98,15.79,94.0,40.54
-3303104,Natividade,1,Saneamento avançado,0.5419458971878544,87.25,100.0,100.0,0.0,88.4,32.25
-3303203,Nilópolis,1,Saneamento avançado,0.5794209379156622,100.0,72.365,100.0,0.0,100.0,30.7
-3303302,Niterói,1,Saneamento avançado,0.45366592603800493,100.0,95.55,94.16,0.0,100.0,19.9
-3303401,Nova Friburgo,1,Saneamento avançado,0.5900972726546491,99.9,97.03,100.0,0.0,89.9,21.56
-3303708,Paraíba do Sul,1,Saneamento avançado,0.6283433484020615,99.44,91.25,100.0,0.0,91.7,25.4
-3303906,Petrópolis,1,Saneamento avançado,0.6334546480361054,99.1,86.7,100.0,0.0,96.9,22.28
-3304102,Porciúncula,1,Saneamento avançado,0.4591871364440832,94.91,72.365,100.0,0.0,80.2,43.36
-3304110,Porto Real,1,Saneamento avançado,0.5883695946462694,99.57,98.4,100.0,0.0,99.3,20.0
-3304128,Quatis,1,Saneamento avançado,0.5683759541987113,100.0,96.96,100.0,0.0,93.8,13.3
-3304151,Quissamã,1,Saneamento avançado,0.48192588811864956,100.0,99.73,100.0,0.0,81.1,40.5
-3304201,Resende,1,Saneamento avançado,0.5461980344729952,100.0,99.29,97.22,0.0,97.2,19.56
-3304557,Rio de Janeiro,1,Saneamento avançado,0.5424142903593929,89.17,85.78,100.0,0.0,100.0,38.92
-3304607,Santa Maria Madalena,1,Saneamento avançado,0.09459724675761443,82.22,63.73,94.09,0.0,71.4,38.81
-3304706,Santo Antônio de Pádua,1,Saneamento avançado,0.5911582762675396,99.75,89.59,97.65,0.0,91.5,25.08
-3305406,Sapucaia,1,Saneamento avançado,0.4743685272034693,100.0,69.85,100.0,0.0,79.4,34.09
-3304755,São Francisco de Itabapoana,1,Saneamento avançado,0.23479731217313407,100.0,72.365,100.0,0.0,61.9,35.23
-3305000,São João da Barra,1,Saneamento avançado,0.20322408547068896,100.0,100.0,94.1,0.0,79.8,53.31
-3305109,São João de Meriti,1,Saneamento avançado,0.40291208361294945,89.96,60.33,100.0,0.0,100.0,25.9
-3305208,São Pedro da Aldeia,1,Saneamento avançado,0.630730099010317,98.0,90.0,100.0,0.0,97.2,36.24
-3306008,Três Rios,1,Saneamento avançado,0.6201791803348652,97.64,79.99,100.0,0.0,97.6,36.63
-3306156,Varre-Sai,1,Saneamento avançado,0.46461086500196275,100.0,72.365,100.0,0.0,94.0,49.81
-3306305,Volta Redonda,1,Saneamento avançado,0.5802837051168674,99.5,99.24,100.0,0.0,99.8,38.27
-3300456,Belford Roxo,2,"Água adequada, esgoto deficiente",0.5469015526257681,95.11,7.62,100.0,0.0,100.0,37.73
-3302007,Itaguaí,2,"Água adequada, esgoto deficiente",0.49968462833486693,76.64,0.0,97.92,0.0,97.9,36.63
-3302452,Macuco,2,"Água adequada, esgoto deficiente",0.5372056362384564,100.0,7.92,91.02,0.0,91.0,34.03
-3302700,Maricá,2,"Água adequada, esgoto deficiente",0.5296186996764178,78.26,12.59,94.35,0.0,99.1,37.42
-3302858,Mesquita,2,"Água adequada, esgoto deficiente",0.3208984475817059,99.7,27.77,100.0,0.0,100.0,64.54
-3302908,Miguel Pereira,2,"Água adequada, esgoto deficiente",0.529557090286517,95.24,12.07,90.39,0.0,90.4,35.38
-3303807,Paraty,2,"Água adequada, esgoto deficiente",0.5068866315841306,97.88,0.0,100.0,0.0,80.1,29.55
-3303856,Paty do Alferes,2,"Água adequada, esgoto deficiente",0.5038598424425866,96.04,4.94,100.0,0.0,76.9,47.87
-3303955,Pinheiral,2,"Água adequada, esgoto deficiente",0.47979171213238,92.61,2.43,100.0,0.0,94.1,67.57
-3304003,Piraí,2,"Água adequada, esgoto deficiente",0.5285602974075366,97.88,5.99,100.0,0.0,84.8,58.6
-3304144,Queimados,2,"Água adequada, esgoto deficiente",0.590212608066037,94.88,1.61,94.25,0.0,100.0,51.29
-3304524,Rio das Ostras,2,"Água adequada, esgoto deficiente",0.438729514207079,76.21,4.81,100.0,0.0,99.7,22.97
-3305554,Seropédica,2,"Água adequada, esgoto deficiente",0.2061834954290248,64.78,1.51,100.0,0.0,97.5,36.63
-3304805,São Fidélis,2,"Água adequada, esgoto deficiente",0.5559639478846702,88.0,4.87,100.0,0.0,82.9,38.51
-3304904,São Gonçalo,2,"Água adequada, esgoto deficiente",0.4903197273260581,95.93,20.0,93.69,0.0,100.0,40.38
-3306107,Valença,2,"Água adequada, esgoto deficiente",0.05660240932747051,100.0,32.0,83.62,0.0,94.3,62.38
-3306206,Vassouras,2,"Água adequada, esgoto deficiente",0.351005081623378,95.98,24.27,91.57,0.0,86.9,22.58
-3301108,Cantagalo,3,Déficit estrutural,0.4062100944516894,100.0,72.365,91.97,93.31,85.5,33.96
-3301207,Carmo,3,Déficit estrutural,0.42955779001790007,93.8,72.365,93.09,100.0,90.2,48.63
-3301504,Cordeiro,3,Déficit estrutural,0.3065641887704199,100.0,13.0,100.0,100.0,97.4,34.92
-3301603,Duas Barras,3,Déficit estrutural,0.409195161410023,100.0,72.365,100.0,100.0,71.9,29.97
-3301702,Duque de Caxias,3,Déficit estrutural,0.34086286503524393,81.66,20.0,99.76,100.0,99.8,27.77
-3302502,Magé,3,Déficit estrutural,0.35177587711222047,70.09,72.365,100.0,100.0,98.8,20.85
-3305505,Saquarema,3,Déficit estrutural,0.09715621800292361,97.88,74.52,96.52,69.3,97.2,36.63
-3305703,Sumidouro,3,Déficit estrutural,0.10768235856908194,56.68,63.15,80.0,100.0,40.4,16.49
-3305158,São José do Vale do Rio Preto,3,Déficit estrutural,0.31117897410074774,100.0,16.04,100.0,100.0,57.4,33.86
-3300605,Bom Jesus do Itabapoana,4,Saneamento avançado,0.3465600396752049,93.26,72.365,80.73,0.0,94.0,45.71
-3300704,Cabo Frio,4,Saneamento avançado,0.20599043105947945,98.0,90.0,80.3,0.0,99.5,25.35
-3301157,Cardoso Moreira,4,Saneamento avançado,0.4134078407422171,89.69,72.365,71.28,0.0,71.3,57.48
-3302106,Itaocara,4,Saneamento avançado,0.40710484013356335,100.0,72.365,74.99,29.65,81.5,40.22
-3304300,Rio Bonito,4,Saneamento avançado,0.34372014553399205,91.27,72.365,82.89,0.0,87.5,53.88
-3304409,Rio Claro,4,Saneamento avançado,0.29474428629294724,82.64,95.71,82.18,0.0,82.2,35.84
-3304508,Rio das Flores,4,Saneamento avançado,-0.03515523635577948,100.0,82.79,90.68,0.0,82.1,62.07
-3305604,Silva Jardim,4,Saneamento avançado,0.03087287125352094,100.0,78.0,89.46,39.9,81.4,36.63
-3305133,São José de Ubá,4,Saneamento avançado,0.2700794840945743,94.4,72.365,82.02,0.0,48.6,23.1
-3305307,São Sebastião do Alto,4,Saneamento avançado,0.08397341298397831,100.0,72.365,90.01,0.0,57.4,24.3
-3305802,Teresópolis,4,Saneamento avançado,-0.04170139487657821,97.72,72.365,88.42,0.0,94.0,43.14
-3300803,Cachoeiras de Macacu,5,Saneamento avançado,0.23195654794308285,85.4,72.365,100.0,0.0,84.3,88.24
-3302254,Itatiaia,5,Saneamento avançado,0.25572337529890543,90.0,70.21,100.0,4.02,98.4,92.62
-3302270,Japeri,5,Saneamento avançado,0.18977341066776166,65.74,72.365,100.0,0.0,98.9,69.31
-3302809,Mendes,5,Saneamento avançado,0.18080305094697874,88.89,80.24,100.0,0.0,98.0,85.74
-3303500,Nova Iguaçu,5,Saneamento avançado,-0.11076159657480301,100.0,27.33,100.0,0.0,99.6,96.09
-3303609,Paracambi,5,Saneamento avançado,0.2079628634794395,50.72,72.365,85.42,0.0,94.9,99.14
-3305752,Tanguá,5,Saneamento avançado,-0.05462650520813831,60.9,77.0,95.0,0.0,91.3,47.26
-3305901,Trajano de Moraes,5,Saneamento avançado,-0.10761158872126371,44.08,72.365,95.76,0.0,60.5,30.71
+3301108,Cantagalo,0,Atendimento precário,0.4601872731123828,100.0,72.365,91.97,93.31,70.7,33.96
+3301207,Carmo,0,Atendimento precário,0.5046620212414133,93.8,72.365,93.09,100.0,80.7,48.63
+3301504,Cordeiro,0,Atendimento precário,0.4251476364663589,100.0,13.0,100.0,100.0,99.7,34.92
+3301603,Duas Barras,0,Atendimento precário,0.48870150827660275,100.0,72.365,100.0,100.0,71.9,29.97
+3301702,Duque de Caxias,0,Atendimento precário,0.4596816747252385,81.66,20.0,99.76,100.0,96.6,27.77
+3302502,Magé,0,Atendimento precário,0.4696337796656277,70.09,72.365,100.0,100.0,88.1,20.85
+3305505,Saquarema,0,Atendimento precário,0.287292729632836,97.88,74.52,96.52,69.3,82.2,36.63
+3305703,Sumidouro,0,Atendimento precário,0.32935095742835574,56.68,63.15,80.0,100.0,89.3,16.49
+3305158,São José do Vale do Rio Preto,0,Atendimento precário,0.45740413606558183,100.0,16.04,100.0,100.0,93.5,33.86
+3300100,Angra dos Reis,1,Atendimento adequado consolidado,0.29715068311216547,92.0,64.19,100.0,0.0,96.3,21.27
+3300159,Aperibé,1,Atendimento adequado consolidado,0.15556413788983545,100.0,54.0,100.0,0.0,86.9,40.56
+3300209,Araruama,1,Atendimento adequado consolidado,0.4358719465953621,100.0,78.0,100.0,0.0,95.1,22.15
+3300225,Areal,1,Atendimento adequado consolidado,0.3637338622439432,100.0,72.365,100.0,0.0,86.9,8.74
+3300233,Armação dos Búzios,1,Atendimento adequado consolidado,0.46580157522763443,98.0,90.0,100.0,0.0,100.0,43.9
+3300258,Arraial do Cabo,1,Atendimento adequado consolidado,0.47749903004124633,98.0,90.0,100.0,0.0,100.0,37.59
+3300407,Barra Mansa,1,Atendimento adequado consolidado,0.3502292681665144,77.54,80.76,100.0,0.0,99.1,46.74
+3300308,Barra do Piraí,1,Atendimento adequado consolidado,0.350702991639798,97.88,69.83,100.0,0.0,97.0,15.82
+3300506,Bom Jardim,1,Atendimento adequado consolidado,0.299979889044953,89.49,72.365,100.0,0.0,60.3,21.75
+3300605,Bom Jesus do Itabapoana,1,Atendimento adequado consolidado,0.24966164217946268,93.26,72.365,80.73,0.0,84.5,45.71
+3300704,Cabo Frio,1,Atendimento adequado consolidado,0.3369041935543579,98.0,90.0,80.3,0.0,75.4,25.35
+3300803,Cachoeiras de Macacu,1,Atendimento adequado consolidado,0.16770178845330583,85.4,72.365,100.0,0.0,86.5,88.24
+3301009,Campos dos Goytacazes,1,Atendimento adequado consolidado,0.5200726736038865,99.9,96.17,100.0,0.0,90.3,33.64
+3301157,Cardoso Moreira,1,Atendimento adequado consolidado,0.14920291688431722,89.69,72.365,71.28,0.0,69.5,57.48
+3301306,Casimiro de Abreu,1,Atendimento adequado consolidado,0.1418880917721962,97.88,53.94,100.0,0.0,97.2,39.35
+3300951,Comendador Levy Gasparian,1,Atendimento adequado consolidado,0.46232737671455887,100.0,100.0,96.89,0.0,96.1,8.47
+3301405,Conceição de Macabu,1,Atendimento adequado consolidado,0.16403260680288648,100.0,54.99,91.87,0.0,70.8,37.33
+3301876,Iguaba Grande,1,Atendimento adequado consolidado,0.4490101799594223,98.0,90.0,100.0,0.0,98.8,50.77
+3302056,Italva,1,Atendimento adequado consolidado,0.4087273266029911,100.0,92.99,100.0,0.0,75.7,62.62
+3302106,Itaocara,1,Atendimento adequado consolidado,0.16933423015962337,100.0,72.365,74.99,29.65,92.2,40.22
+3302205,Itaperuna,1,Atendimento adequado consolidado,0.47358774256803227,87.35,94.48,94.25,0.0,96.6,42.28
+3302254,Itatiaia,1,Atendimento adequado consolidado,0.1317500907941411,90.0,70.21,100.0,4.02,100.0,92.62
+3302270,Japeri,1,Atendimento adequado consolidado,0.16599854236533684,65.74,72.365,100.0,0.0,75.3,69.31
+3302304,Laje do Muriaé,1,Atendimento adequado consolidado,0.5013081877757535,100.0,100.0,95.37,0.0,98.1,28.24
+3302403,Macaé,1,Atendimento adequado consolidado,0.48782736632699786,93.08,85.63,100.0,0.0,87.2,25.19
+3302601,Mangaratiba,1,Atendimento adequado consolidado,0.3501323563452099,87.45,72.365,100.0,0.0,98.5,18.82
+3302809,Mendes,1,Atendimento adequado consolidado,0.22695032894440498,88.89,80.24,100.0,0.0,100.0,85.74
+3303005,Miracema,1,Atendimento adequado consolidado,0.3732344516404964,100.0,72.365,93.98,15.79,79.9,40.54
+3303104,Natividade,1,Atendimento adequado consolidado,0.47645094919376585,87.25,100.0,100.0,0.0,100.0,32.25
+3303203,Nilópolis,1,Atendimento adequado consolidado,0.38069948182766306,100.0,72.365,100.0,0.0,100.0,30.7
+3303302,Niterói,1,Atendimento adequado consolidado,0.49921930961250266,100.0,95.55,94.16,0.0,87.5,19.9
+3303401,Nova Friburgo,1,Atendimento adequado consolidado,0.4854097516131181,99.9,97.03,100.0,0.0,98.9,21.56
+3303609,Paracambi,1,Atendimento adequado consolidado,0.05884721838210996,50.72,72.365,85.42,0.0,88.0,99.14
+3303708,Paraíba do Sul,1,Atendimento adequado consolidado,0.472031648251223,99.44,91.25,100.0,0.0,73.8,25.4
+3303906,Petrópolis,1,Atendimento adequado consolidado,0.4899632651026168,99.1,86.7,100.0,0.0,89.8,22.28
+3304102,Porciúncula,1,Atendimento adequado consolidado,0.3632038522082041,94.91,72.365,100.0,0.0,99.4,43.36
+3304110,Porto Real,1,Atendimento adequado consolidado,0.499745618825932,99.57,98.4,100.0,0.0,94.0,20.0
+3304128,Quatis,1,Atendimento adequado consolidado,0.45714563956948523,100.0,96.96,100.0,0.0,100.0,13.3
+3304151,Quissamã,1,Atendimento adequado consolidado,0.5098919323244919,100.0,99.73,100.0,0.0,93.8,40.5
+3304201,Resende,1,Atendimento adequado consolidado,0.48483502126905376,100.0,99.29,97.22,0.0,74.3,19.56
+3304300,Rio Bonito,1,Atendimento adequado consolidado,0.2533456186686109,91.27,72.365,82.89,0.0,79.0,53.88
+3304409,Rio Claro,1,Atendimento adequado consolidado,0.3476212021089477,82.64,95.71,82.18,0.0,69.6,35.84
+3304508,Rio das Flores,1,Atendimento adequado consolidado,0.3595878235729449,100.0,82.79,90.68,0.0,94.5,62.07
+3304557,Rio de Janeiro,1,Atendimento adequado consolidado,0.35832756471159394,89.17,85.78,100.0,0.0,57.5,38.92
+3304607,Santa Maria Madalena,1,Atendimento adequado consolidado,0.2519698597467651,82.22,63.73,94.09,0.0,76.6,38.81
+3304706,Santo Antônio de Pádua,1,Atendimento adequado consolidado,0.35308209796694334,99.75,89.59,97.65,0.0,51.0,25.08
+3305406,Sapucaia,1,Atendimento adequado consolidado,0.3780785776062878,100.0,69.85,100.0,0.0,94.9,34.09
+3305604,Silva Jardim,1,Atendimento adequado consolidado,0.10880677031528374,100.0,78.0,89.46,39.9,36.5,36.63
+3304755,São Francisco de Itabapoana,1,Atendimento adequado consolidado,0.396568473695875,100.0,72.365,100.0,0.0,79.1,35.23
+3305133,São José de Ubá,1,Atendimento adequado consolidado,0.19934276654343333,94.4,72.365,82.02,0.0,44.5,23.1
+3305000,São João da Barra,1,Atendimento adequado consolidado,0.4532219630530681,100.0,100.0,94.1,0.0,100.0,53.31
+3305109,São João de Meriti,1,Atendimento adequado consolidado,0.14488663155990425,89.96,60.33,100.0,0.0,44.2,25.9
+3305208,São Pedro da Aldeia,1,Atendimento adequado consolidado,0.3523644271896823,98.0,90.0,100.0,0.0,51.9,36.24
+3305307,São Sebastião do Alto,1,Atendimento adequado consolidado,0.3567246387198352,100.0,72.365,90.01,0.0,75.7,24.3
+3305752,Tanguá,1,Atendimento adequado consolidado,0.2445561200732034,60.9,77.0,95.0,0.0,89.3,47.26
+3305802,Teresópolis,1,Atendimento adequado consolidado,0.22707226221151014,97.72,72.365,88.42,0.0,46.5,43.14
+3305901,Trajano de Moraes,1,Atendimento adequado consolidado,0.1204833281262319,44.08,72.365,95.76,0.0,97.1,30.71
+3306008,Três Rios,1,Atendimento adequado consolidado,0.467062437264999,97.64,79.99,100.0,0.0,86.6,36.63
+3306156,Varre-Sai,1,Atendimento adequado consolidado,0.31697131192615924,100.0,72.365,100.0,0.0,67.4,49.81
+3306305,Volta Redonda,1,Atendimento adequado consolidado,0.5067848239516773,99.5,99.24,100.0,0.0,96.3,38.27
+3300456,Belford Roxo,2,Déficit severo de esgotamento sanitário,0.4479851412943625,95.11,7.62,100.0,0.0,100.0,37.73
+3300936,Carapebus,2,Déficit severo de esgotamento sanitário,0.20179617404405042,28.23,18.35,100.0,0.0,78.9,25.08
+3301900,Itaboraí,2,Déficit severo de esgotamento sanitário,0.2536542269576819,31.92,8.0,100.0,0.0,95.5,78.56
+3302007,Itaguaí,2,Déficit severo de esgotamento sanitário,0.4692176479983155,76.64,0.0,97.92,0.0,72.8,36.63
+3302452,Macuco,2,Déficit severo de esgotamento sanitário,0.41194937372922436,100.0,7.92,91.02,0.0,94.7,34.03
+3302700,Maricá,2,Déficit severo de esgotamento sanitário,0.429053970764327,78.26,12.59,94.35,0.0,98.7,37.42
+3302858,Mesquita,2,Déficit severo de esgotamento sanitário,0.2923360395564308,99.7,27.77,100.0,0.0,87.3,64.54
+3302908,Miguel Pereira,2,Déficit severo de esgotamento sanitário,0.40880809142657776,95.24,12.07,90.39,0.0,92.2,35.38
+3303500,Nova Iguaçu,2,Déficit severo de esgotamento sanitário,0.20739932652472295,100.0,27.33,100.0,0.0,88.5,96.09
+3303807,Paraty,2,Déficit severo de esgotamento sanitário,0.41646270581305683,97.88,0.0,100.0,0.0,70.5,29.55
+3303856,Paty do Alferes,2,Déficit severo de esgotamento sanitário,0.48382909570202737,96.04,4.94,100.0,0.0,95.1,47.87
+3303955,Pinheiral,2,Déficit severo de esgotamento sanitário,0.4640035232053978,92.61,2.43,100.0,0.0,79.2,67.57
+3304003,Piraí,2,Déficit severo de esgotamento sanitário,0.46198071315735945,97.88,5.99,100.0,0.0,78.2,58.6
+3304144,Queimados,2,Déficit severo de esgotamento sanitário,0.41221873414984034,94.88,1.61,94.25,0.0,64.2,51.29
+3304524,Rio das Ostras,2,Déficit severo de esgotamento sanitário,0.41345896532345955,76.21,4.81,100.0,0.0,100.0,22.97
+3305554,Seropédica,2,Déficit severo de esgotamento sanitário,0.4297774093758218,64.78,1.51,100.0,0.0,75.5,36.63
+3304805,São Fidélis,2,Déficit severo de esgotamento sanitário,0.47450520096399834,88.0,4.87,100.0,0.0,99.9,38.51
+3304904,São Gonçalo,2,Déficit severo de esgotamento sanitário,0.3738168532178212,95.93,20.0,93.69,0.0,78.5,40.38
+3306107,Valença,2,Déficit severo de esgotamento sanitário,0.09008365254944216,100.0,32.0,83.62,0.0,61.1,62.38
+3306206,Vassouras,2,Déficit severo de esgotamento sanitário,0.25147022079916204,95.98,24.27,91.57,0.0,100.0,22.58

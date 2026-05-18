@@ -12,7 +12,7 @@ from sklearn.metrics import silhouette_score
 
 st.set_page_config(
     page_title="Radar Risco Sanitário - RJ",
-    page_icon="🚰",
+    page_icon=None,
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -24,77 +24,73 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
     html, body, [class*="st-"] { font-family: 'Inter', sans-serif; }
+    .stApp { background: #ffffff; }
     .block-container { padding-top: .5rem; max-width: 1280px; }
     .hero {
-        background: linear-gradient(135deg, #0c1d36 0%, #183b5c 45%, #1a5276 100%);
-        color: white; padding: 2.5rem 2.5rem 2rem; border-radius: 16px;
-        margin-bottom: 1.5rem; position: relative; overflow: hidden;
+        background: #fff; color: #1a1a1a; padding: 1.5rem 0 1rem;
+        margin-bottom: 1rem;
     }
-    .hero::after {
-        content: ''; position: absolute; top: -40%; right: -10%;
-        width: 450px; height: 450px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(33,150,243,.12) 0%, transparent 70%);
-    }
-    .hero h1 { font-size: 2.2rem; font-weight: 900; margin: 0 0 .25rem; letter-spacing: -.5px; }
-    .hero .sub { opacity: .7; font-size: .9rem; margin-bottom: 1.2rem; }
-    .bn-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: .5rem 0 0; }
+    .hero h1 { font-size: 1.6rem; font-weight: 800; margin: 0 0 .2rem; color: #1a1a1a; }
+    .hero .sub { color: #6b7280; font-size: .8rem; margin-bottom: 1rem; }
+    .bn-row { display: flex; gap: .6rem; flex-wrap: wrap; margin: 0; }
     .bn-card {
-        flex: 1 1 170px; background: rgba(255,255,255,.07);
-        border-radius: 12px; padding: 1.1rem 1rem;
-        backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.1);
+        flex: 1 1 140px; background: #fff;
+        border-radius: 8px; padding: .9rem .8rem;
+        border: 1px solid #e5e7eb;
     }
-    .bn-card .number { font-size: 2rem; font-weight: 900; line-height: 1.1; }
-    .bn-card .label { font-size: .72rem; opacity: .65; margin-top: .25rem; text-transform: uppercase; letter-spacing: .3px; }
+    .bn-card .number { font-size: 1.6rem; font-weight: 800; line-height: 1.1; color: #1a1a1a; }
+    .bn-card .label { font-size: .65rem; color: #6b7280; margin-top: .2rem; text-transform: uppercase; letter-spacing: .2px; }
     .section-title {
-        font-size: 1.15rem; font-weight: 700; color: #0c1d36;
-        border-left: 4px solid #2196F3; padding-left: .75rem;
-        margin: 2rem 0 .75rem;
+        font-size: 1rem; font-weight: 700; color: #1a1a1a;
+        margin: 1.5rem 0 .4rem;
     }
-    .section-subtitle { font-size: .85rem; color: #64748b; margin: -.5rem 0 1rem 1rem; }
+    .section-subtitle { font-size: .8rem; color: #6b7280; margin: 0 0 .8rem 0; }
     .insight {
-        background: #f0f4f8; border-radius: 10px;
-        padding: 1rem 1.2rem; margin: .75rem 0; font-size: .86rem;
-        line-height: 1.6; color: #334155; border-left: 4px solid #2196F3;
+        background: #f8fafc; border-radius: 8px;
+        padding: .9rem 1rem; margin: .6rem 0; font-size: .82rem;
+        line-height: 1.6; color: #374151;
     }
-    .insight.alert { background: #fef2f2; border-left-color: #dc2626; }
-    .insight.warn  { background: #fffbeb; border-left-color: #d97706; }
-    .insight.ok    { background: #f0fdf4; border-left-color: #16a34a; }
-    .insight strong { color: #0c1d36; }
+    .insight.alert { background: #fef2f2; }
+    .insight.warn  { background: #fffbeb; }
+    .insight.ok    { background: #f0fdf4; }
+    .insight strong { color: #1a1a1a; }
     .profile-header {
-        background: linear-gradient(135deg, #0c1d36, #1a5276);
-        color: #fff; border-radius: 14px; padding: 2rem 2rem 1.5rem;
-        margin-bottom: 1.2rem;
+        background: #fff; color: #1a1a1a; border-radius: 8px;
+        padding: 1.2rem; margin-bottom: .8rem;
+        border: 1px solid #e5e7eb;
     }
-    .profile-header h2 { font-size: 1.6rem; font-weight: 800; margin: 0; }
+    .profile-header h2 { font-size: 1.3rem; font-weight: 800; margin: 0; color: #1a1a1a; }
     .profile-header .badge {
-        display: inline-block; margin-top: .5rem; padding: .2rem .7rem;
-        border-radius: 6px; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+        display: inline-block; margin-top: .4rem; padding: .2rem .6rem;
+        border-radius: 4px; font-size: .7rem; font-weight: 700; text-transform: uppercase;
     }
     .profile-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: .6rem; margin: 1rem 0;
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: .4rem; margin: .6rem 0;
     }
     .profile-metric {
-        background: rgba(255,255,255,.06); border-radius: 10px;
-        padding: .8rem .7rem; border: 1px solid rgba(255,255,255,.08);
+        background: #fff; border-radius: 6px;
+        padding: .6rem .5rem; border: 1px solid #e5e7eb;
     }
-    .profile-metric .val { font-size: 1.3rem; font-weight: 800; }
-    .profile-metric .lbl { font-size: .65rem; opacity: .6; text-transform: uppercase; letter-spacing: .3px; margin-top: .15rem; }
-    .source { font-size: .7rem; color: #94a3b8; margin-top: .5rem; }
+    .profile-metric .val { font-size: 1.1rem; font-weight: 800; color: #1a1a1a; }
+    .profile-metric .lbl { font-size: .6rem; color: #6b7280; text-transform: uppercase; letter-spacing: .2px; margin-top: .1rem; }
+    .source { font-size: .68rem; color: #9ca3af; margin-top: .4rem; }
     .footer {
-        background: #0c1d36; color: rgba(255,255,255,.6);
-        padding: 2rem; border-radius: 14px; margin-top: 3rem;
-        font-size: .78rem; line-height: 1.7;
+        background: #f8fafc; color: #6b7280;
+        padding: 1.2rem; border-radius: 8px; margin-top: 2rem;
+        font-size: .72rem; line-height: 1.6;
     }
-    .footer a { color: #60a5fa; }
-    .footer h4 { color: #fff; margin: 0 0 .5rem; font-size: .9rem; }
+    .footer a { color: #c2703a; }
+    .footer h4 { color: #1a1a1a; margin: 0 0 .4rem; font-size: .82rem; }
     #MainMenu, footer, header { visibility: hidden; }
     .stDeployButton { display: none; }
-    .stTabs [data-baseweb="tab-list"] { gap: 0; }
-    .stTabs [data-baseweb="tab"] { font-size: .82rem; font-weight: 600; padding: .6rem 1.2rem; }
-    .metric-mini { display: inline-flex; align-items: baseline; gap: .4rem; margin-right: 1.5rem; margin-bottom: .5rem; }
-    .metric-mini .val { font-size: 1.6rem; font-weight: 800; color: #0c1d36; }
-    .metric-mini .lbl { font-size: .78rem; color: #64748b; }
+    [data-testid="stExpander"] details summary span[data-testid="stMarkdownContainer"] p { display: inline; }
+    .stTabs [data-baseweb="tab-list"] { gap: 0; border-bottom: 1px solid #e5e7eb; }
+    .stTabs [data-baseweb="tab"] { font-size: .78rem; font-weight: 600; padding: .5rem 1rem; color: #6b7280; }
+    .stTabs [data-baseweb="tab"][aria-selected="true"] { color: #c2703a; border-bottom: 2px solid #c2703a; }
+    .metric-mini { display: inline-flex; align-items: baseline; gap: .3rem; margin-right: 1.2rem; margin-bottom: .4rem; }
+    .metric-mini .val { font-size: 1.4rem; font-weight: 800; color: #1a1a1a; }
+    .metric-mini .lbl { font-size: .72rem; color: #6b7280; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -109,15 +105,15 @@ LABEL = {
     "cobertura_residuos_solidos": "Cobertura de Resíduos Sólidos (%)",
     "investimento_per_capita": "Investimento per capita (R$/hab)",
     "disposicao_final_inadequada_rsu": "Disposição Final Inadequada (%)",
-    "cobertura_coleta_seletiva_total": "Coleta Seletiva (%)",
+    "cobertura_coleta_seletiva": "Coleta Seletiva (%)",
     "indice_hidrometracao": "Índice de Hidrometração (%)",
     "indice_macromedicao": "Índice de Macromedição (%)",
     "volume_agua_produzido": "Volume de Água Produzido (m³)",
-    "massa_per_capita_rsu_coletado": "RSU per capita (kg/hab/dia)",
+    "massa_rsu_per_capita": "RSU per capita (kg/hab/dia)",
     "score": "Índice Composto de Saneamento",
-    "populacao_urbana": "População Urbana",
-    "populacao_rural": "População Rural",
-    "area_municipio_km2": "Área (km²)",
+    "populacao_urbana_residente": "População Urbana",
+    "populacao_rural_residente": "População Rural",
+    "area_municipio": "Área (km²)",
 }
 
 META_AGUA = 99.0
@@ -130,8 +126,17 @@ SCORE_COLS = [
 ]
 
 COR_RISCO = {
-    "Adequado": "#16a34a", "Regular": "#ca8a04",
-    "Atenção": "#ea580c", "Crítico": "#dc2626", "Sem dados": "#cbd5e1",
+    "Atendimento adequado": "#16a34a",
+    "Atendimento precário": "#ca8a04",
+    "Déficit de esgotamento sanitário": "#ea580c",
+    "Déficit severo de esgotamento sanitário": "#dc2626",
+    "Déficit de abastecimento de água": "#e11d48",
+    "Déficit crítico - água e esgoto": "#7f1d1d",
+    "Déficit de manejo de resíduos sólidos": "#d97706",
+    "Déficit de manejo de resíduos - contexto rural": "#92400e",
+    "Déficit estrutural de saneamento": "#9333ea",
+    "Déficit estrutural - município rural vulnerável": "#6b21a8",
+    "Sem dados": "#cbd5e1",
 }
 
 MAP_INDICATORS = [
@@ -148,28 +153,16 @@ CLUSTER_FEATURES = [
 ]
 
 CLUSTER_NAMES = {
-    0: "Saneamento avançado",
-    1: "Água adequada, esgoto deficiente",
-    2: "Déficit estrutural urbano",
-    3: "Município rural vulnerável",
+    0: "Atendimento adequado consolidado",
+    1: "Déficit de esgotamento sanitário",
+    2: "Déficit estrutural de saneamento",
+    3: "Município rural com déficit múltiplo",
 }
 
 
 # ---------------------------------------------------------------------------
 # Funções auxiliares
 # ---------------------------------------------------------------------------
-def parse_br(val):
-    if pd.isna(val) or val == "":
-        return None
-    s = str(val).strip().strip('"')
-    if s in ("", " "):
-        return None
-    s = s.replace(".", "").replace(",", ".")
-    try:
-        return float(s)
-    except ValueError:
-        return None
-
 
 def fmt_pop(n, abrev=True):
     if pd.isna(n):
@@ -195,16 +188,62 @@ def calc_score(row):
     return np.mean(vals) if len(vals) >= 2 else np.nan
 
 
-def classificar(s):
-    if pd.isna(s):
+def classificar_saneamento(row):
+    """
+    Classificação baseada na terminologia do PLANSAB (Lei 11.445/2007
+    atualizada pela Lei 14.026/2020 - Marco Legal do Saneamento).
+
+    Limiares de referência:
+    - Água >= 90%: próximo da universalização (meta Marco Legal: 99% até 2033)
+    - Esgoto >= 75%: atendimento adequado urbano (meta Marco Legal: 90% até 2033)
+    - RSU >= 80%: atendimento adequado (PLANSAB)
+    - Água < 60%: sem atendimento ou atendimento precário grave
+    - Esgoto < 30%: déficit severo de esgotamento sanitário
+    """
+    agua = row.get("indice_atendimento_total_agua", np.nan)
+    esgoto = row.get("indice_coleta_esgoto", np.nan)
+    residuos = row.get("cobertura_residuos_solidos", np.nan)
+    pct_urb = row.get("pct_populacao_urbana", np.nan)
+
+    if pd.isna(agua) and pd.isna(esgoto):
         return "Sem dados"
-    if s >= 70:
-        return "Adequado"
-    if s >= 50:
-        return "Regular"
-    if s >= 30:
-        return "Atenção"
-    return "Crítico"
+
+    rural = pd.notna(pct_urb) and pct_urb < 50
+
+    if (pd.notna(agua) and agua >= 90 and
+        pd.notna(esgoto) and esgoto >= 75 and
+        (pd.isna(residuos) or residuos >= 80)):
+        return "Atendimento adequado"
+
+    if (pd.notna(agua) and agua >= 70 and
+        pd.notna(esgoto) and esgoto < 50):
+        if esgoto < 30:
+            return "Déficit severo de esgotamento sanitário"
+        return "Déficit de esgotamento sanitário"
+
+    if pd.notna(agua) and agua < 60:
+        if pd.notna(esgoto) and esgoto < 30:
+            return "Déficit crítico - água e esgoto"
+        return "Déficit de abastecimento de água"
+
+    if (pd.notna(residuos) and residuos < 50 and
+        pd.notna(agua) and agua >= 70 and
+        pd.notna(esgoto) and esgoto >= 50):
+        if rural:
+            return "Déficit de manejo de resíduos - contexto rural"
+        return "Déficit de manejo de resíduos sólidos"
+
+    n_deficit = sum([
+        pd.notna(agua) and agua < 70,
+        pd.notna(esgoto) and esgoto < 50,
+        pd.notna(residuos) and residuos < 50,
+    ])
+    if n_deficit >= 2:
+        if rural:
+            return "Déficit estrutural - município rural vulnerável"
+        return "Déficit estrutural de saneamento"
+
+    return "Atendimento precário"
 
 
 def classificar_porte(pop):
@@ -222,16 +261,75 @@ def classificar_porte(pop):
 # ---------------------------------------------------------------------------
 # Carregamento de dados
 # ---------------------------------------------------------------------------
+RENAME_COLS = {
+    "Município": "nome_municipio",
+    "Sigla UF": "sigla_uf",
+    "População Total Residente": "populacao_total_residente",
+    "População Rural Residente": "populacao_rural_residente",
+    "População Urbana Residente": "populacao_urbana_residente",
+    "População total atendida com abastecimento de água": "populacao_atendida_agua",
+    "População urbana atendida com rede de abastecimento de água": "populacao_urbana_atendida_agua",
+    "Atendimento da população urbana com rede de abastecimento de água": "indice_atendimento_urbano_agua",
+    "Atendimento da população total com rede de abastecimento de água": "indice_atendimento_total_agua",
+    "População total atendida com esgotamento sanitário": "populacao_atendida_esgoto",
+    "População urbana atendida com rede de esgotamento sanitário": "populacao_urbana_atendida_esgoto",
+    "Extensão de rede de distribuição de água": "extensao_rede_agua",
+    "Extensão da rede pública de esgotamento sanitário": "extensao_rede_esgoto",
+    "Quantidade de ligações ativas de água": "ligacoes_ativas_agua",
+    "Quantidade de ligações ativas de esgoto": "ligacoes_ativas_esgoto",
+    "Volume de água produzido": "volume_agua_produzido",
+    "Volume de água tratada em ETAs": "volume_agua_tratada_eta",
+    "Volume de água consumido": "volume_agua_consumido",
+    "Volume de água tratada por simples desinfecção": "volume_agua_desinfeccao",
+    "Volume de água tratada importado": "volume_agua_importado",
+    "Volume de água tratada exportado": "volume_agua_exportado",
+    "Volume de água fluoretada": "volume_agua_fluoretada",
+    "Extensão de rede de distribuição de água.1": "extensao_rede_agua_2",
+    "Volume total de esgoto coletado": "volume_esgoto_coletado",
+    "Volume total de esgoto tratado ": "volume_esgoto_tratado",
+    "Volume total de esgoto bruto exportado ": "volume_esgoto_exportado",
+    "Volume total de esgoto bruto importado para tratamento ": "volume_esgoto_importado",
+    "Extensão da rede pública de esgotamento sanitário.1": "extensao_rede_esgoto_2",
+    "Atendimento da população urbana com rede coletora de esgoto": "indice_coleta_esgoto",
+    "Esgoto tratado referido ao esgoto coletado": "indice_tratamento_esgoto",
+    "Perda na Distribuição de Água": "indice_perda_distribuicao_agua",
+    "Índice de Macromedição": "indice_macromedicao",
+    "Índice de Hidrometração": "indice_hidrometracao",
+    "Investimento Total (prestador + município + estado)": "investimento_total",
+    "Investimento per Capita": "investimento_per_capita",
+    "Quantidade de domicílios totais": "domicilios_totais",
+    "Quantidade de domicílios urbanos": "domicilios_urbanos",
+    "Quantidade de domicílios rurais": "domicilios_rurais",
+    "Área do município": "area_municipio",
+    "Cobertura da população total com coleta de resíduos sólidos domiciliares": "cobertura_residuos_solidos",
+    "Cobertura da população urbana com coleta de resíduos sólidos domiciliares": "cobertura_residuos_urbana",
+    "Cobertura da população rural com coleta de resíduos sólidos domiciliares": "cobertura_residuos_rural",
+    "Cobertura da população urbana com coleta direta de resíduos sólidos": "cobertura_residuos_urbana_direta",
+    "Cobertura da população total com coleta seletiva de resíduos sólidos": "cobertura_coleta_seletiva",
+    "Cobertura da população urbana com coleta seletiva direta de resíduos sólidos": "cobertura_coleta_seletiva_urbana",
+    "Incidência do transbordo de resíduos sólidos urbanos": "incidencia_transbordo_rsu",
+    "Capacidade média utilizada dos veículos motorizados na coleta de RSU": "capacidade_veiculos_coleta",
+    "Quantidade média de pontos de entrega voluntária (PEV) de recicláveis por mil habitantes": "pev_por_mil_hab",
+    "Massa média per capita de resíduos sólidos urbanos coletados": "massa_rsu_per_capita",
+    "Massa média per capita de resíduos sólidos domiciliares coletados": "massa_rsd_per_capita",
+    "Massa média per capita de resíduos de limpeza urbana coletados": "massa_limpeza_urbana_per_capita",
+    "Massa média per capita de resíduos domiciliares coletados na coleta seletiva": "massa_coleta_seletiva_per_capita",
+    "Massa média per capita de resíduos domiciliares secos e orgânicos recuperados": "massa_recuperados_per_capita",
+    "Desempenho da coleta seletiva": "desempenho_coleta_seletiva",
+    "Disposição final inadequada de resíduos sólidos urbanos": "disposicao_final_inadequada_rsu",
+    "Recuperação de recicláveis secos em relação à composição gravimétrica": "recuperacao_secos_gravimetria",
+    "Recuperação de recicláveis orgânicos em relação à composição gravimétrica": "recuperacao_organicos_gravimetria",
+    "Recuperação de recicláveis secos e orgânicos em relação ao total coletado": "recuperacao_total_coletado",
+    "Recuperação de recicláveis secos em relação ao total coletado": "recuperacao_secos_total",
+    "Recuperação de recicláveis orgânicos em relação ao total coletado": "recuperacao_organicos_total",
+}
+
+
 @st.cache_data
 def load_saneamento():
-    path = "data/processed/dados_saneamento_snis_sinisa.csv"
-    hdr = pd.read_csv(path, nrows=0, skiprows=[0, 1], encoding="utf-8",
-                       keep_default_na=False).columns.tolist()
-    df = pd.read_csv(path, skiprows=[0, 1, 2], header=None, dtype=str, encoding="utf-8")
-    df.columns = hdr
-    text_cols = {"ano", "id_municipio", "nome_municipio", "sigla_uf"}
-    for c in [c for c in df.columns if c not in text_cols]:
-        df[c] = df[c].apply(parse_br)
+    path = "data/processed/snis_sinisa_merge_ibge_populacao.csv"
+    df = pd.read_csv(path, encoding="utf-8")
+    df.rename(columns=RENAME_COLS, inplace=True)
     df["ano"] = df["ano"].astype(int)
     df["id_municipio"] = df["id_municipio"].astype(str).str.strip()
     return df.sort_values(["nome_municipio", "ano"]).reset_index(drop=True)
@@ -249,22 +347,22 @@ def load_geo():
 def enrich_df(df_atual):
     """Adiciona colunas calculadas ao dataframe do ano atual."""
     df_atual["score"] = df_atual.apply(calc_score, axis=1)
-    df_atual["risco"] = df_atual["score"].apply(classificar)
     df_atual["porte"] = df_atual["populacao_total_residente"].apply(classificar_porte)
 
-    pop_urb = df_atual["populacao_urbana"]
+    pop_urb = df_atual["populacao_urbana_residente"]
     pop_tot = df_atual["populacao_total_residente"]
     df_atual["pct_populacao_urbana"] = np.where(
         pop_tot.notna() & (pop_tot > 0),
         (pop_urb / pop_tot * 100).round(1),
         np.nan,
     )
-    area = df_atual["area_municipio_km2"]
+    area = df_atual["area_municipio"]
     df_atual["densidade_demografica"] = np.where(
         area.notna() & (area > 0),
         (pop_tot / area).round(1),
         np.nan,
     )
+    df_atual["risco"] = df_atual.apply(classificar_saneamento, axis=1)
     return df_atual
 
 
@@ -283,7 +381,7 @@ def render_hero(df_atual, ultimo_ano):
         if pd.notna(r.get("indice_coleta_esgoto")) and pd.notna(r.get("populacao_total_residente")) else 0,
         axis=1).sum()
 
-    n_criticos = (df_atual["risco"] == "Crítico").sum()
+    n_deficit_critico = (df_atual["risco"].str.contains("Déficit", na=False)).sum()
 
     st.markdown(f"""
     <div class="hero">
@@ -295,25 +393,25 @@ def render_hero(df_atual, ultimo_ano):
             <div class="bn-card"><div class="number">{esgoto:.1f}%</div><div class="label">Coleta de esgoto</div></div>
             <div class="bn-card"><div class="number">{perda:.0f}%</div><div class="label">Perda na distribuição</div></div>
             <div class="bn-card"><div class="number" style="color:#fca5a5">{fmt_pop(pop_sem_esgoto)}</div><div class="label">Sem coleta de esgoto</div></div>
-            <div class="bn-card"><div class="number" style="color:#fca5a5">{n_criticos}</div><div class="label">Municípios em situação crítica</div></div>
+            <div class="bn-card"><div class="number" style="color:#fca5a5">{n_deficit_critico}</div><div class="label">Municípios com déficit</div></div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 
 # ── Perfil reutilizável ──
-def _render_municipio_card(row, df_atual, df_hist=None, container=None):
+def _render_municipio_card(row, df_atual, df_hist=None, container=None, key_prefix=""):
     t = container or st
     mun = row.get("nome_municipio", "")
     score = row.get("score", np.nan)
-    risco = row.get("risco", classificar(score))
+    risco = row.get("risco", "Sem dados")
     cor = COR_RISCO.get(risco, "#cbd5e1")
     porte = row.get("porte", "")
 
     pop = row.get("populacao_total_residente", np.nan)
-    pop_urb = row.get("populacao_urbana", np.nan)
-    pop_rur = row.get("populacao_rural", np.nan)
-    area = row.get("area_municipio_km2", np.nan)
+    pop_urb = row.get("populacao_urbana_residente", np.nan)
+    pop_rur = row.get("populacao_rural_residente", np.nan)
+    area = row.get("area_municipio", np.nan)
     dens = row.get("densidade_demografica", np.nan)
     agua = row.get("indice_atendimento_total_agua", np.nan)
     esgoto = row.get("indice_coleta_esgoto", np.nan)
@@ -353,39 +451,33 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
     media_agua = df_atual["indice_atendimento_total_agua"].mean()
     media_esgoto = df_atual["indice_coleta_esgoto"].mean()
 
-    interpretacoes = []
+    linhas = []
     if pd.notna(agua):
-        if agua >= META_AGUA:
-            interpretacoes.append(f"Já atingiu a meta do Marco Legal para água ({META_AGUA}%).")
-        elif agua >= media_agua:
-            interpretacoes.append(f"Atendimento de água ({agua:.1f}%) acima da média estadual ({media_agua:.1f}%), mas ainda distante da meta de {META_AGUA}%.")
-        else:
-            interpretacoes.append(f"Atendimento de água ({agua:.1f}%) <strong>abaixo da média estadual</strong> ({media_agua:.1f}%).")
-
+        cmp_agua = "acima" if agua >= media_agua else "abaixo"
+        cor_agua = "#16a34a" if agua >= media_agua else "#dc2626"
+        linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6">'
+                      f'<span>Água</span>'
+                      f'<span><strong>{agua:.1f}%</strong> <span style="color:{cor_agua};font-size:.75rem">{cmp_agua} da média ({media_agua:.1f}%)</span></span></div>')
     if pd.notna(esgoto):
-        if esgoto >= META_ESGOTO:
-            interpretacoes.append(f"Coleta de esgoto ({esgoto:.1f}%) atinge a meta do Marco Legal ({META_ESGOTO}%).")
-        elif esgoto < 30:
-            interpretacoes.append(f"Coleta de esgoto de apenas <strong>{esgoto:.1f}%</strong> - situação que demanda atenção prioritária.")
-        else:
-            cmp = "acima" if esgoto >= media_esgoto else "<strong>abaixo</strong>"
-            interpretacoes.append(f"Coleta de esgoto ({esgoto:.1f}%) {cmp} da média estadual ({media_esgoto:.1f}%).")
-
+        cmp_esgoto = "acima" if esgoto >= media_esgoto else "abaixo"
+        cor_esgoto = "#16a34a" if esgoto >= media_esgoto else "#dc2626"
+        linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6">'
+                      f'<span>Esgoto</span>'
+                      f'<span><strong>{esgoto:.1f}%</strong> <span style="color:{cor_esgoto};font-size:.75rem">{cmp_esgoto} da média ({media_esgoto:.1f}%)</span></span></div>')
     if pd.notna(esgoto) and pd.notna(pop) and pop > 0:
         sem_esgoto = pop * (1 - esgoto / 100)
         if sem_esgoto > 1000:
-            interpretacoes.append(f"Aproximadamente <strong>{fmt_pop(sem_esgoto, abrev=False)} habitantes</strong> sem coleta de esgoto.")
+            linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6">'
+                          f'<span>Sem coleta de esgoto</span>'
+                          f'<span><strong style="color:#dc2626">{fmt_pop(sem_esgoto, abrev=False)} hab</strong></span></div>')
+    if pd.notna(perda) and perda > 25:
+        cor_perda = "#dc2626" if perda > 40 else "#d97706"
+        linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0">'
+                      f'<span>Perda na distribuição</span>'
+                      f'<span><strong style="color:{cor_perda}">{perda:.0f}%</strong> <span style="font-size:.75rem;color:{cor_perda}">acima do limite (25%)</span></span></div>')
 
-    gap = (agua - esgoto) if pd.notna(agua) and pd.notna(esgoto) else np.nan
-    if pd.notna(gap) and gap > 30:
-        interpretacoes.append(f"Descompasso de <strong>{gap:.0f} pontos percentuais</strong> entre água e esgoto.")
-    if pd.notna(perda) and perda > 40:
-        interpretacoes.append(f"Perda na distribuição de <strong>{perda:.0f}%</strong> - patamar considerado elevado pelo SNIS.")
-
-    if interpretacoes:
-        body = " · ".join(interpretacoes)
-        tipo = "alert" if any("prioritária" in i for i in interpretacoes) else ""
-        t.markdown(f'<div class="insight {tipo}" style="font-size:.82rem">{body}</div>', unsafe_allow_html=True)
+    if linhas:
+        t.markdown(f'<div style="font-size:.82rem;margin:.5rem 0">{"".join(linhas)}</div>', unsafe_allow_html=True)
 
     if df_hist is not None:
         hist = df_hist[df_hist["nome_municipio"] == mun].sort_values("ano")
@@ -401,20 +493,21 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
                     s = hist[["ano", c]].dropna()
                     fig.add_trace(go.Scatter(
                         x=s["ano"], y=s[c], mode="lines+markers",
-                        name=LABEL.get(c, c), line=dict(color=cores.get(c), width=2.5),
-                        marker=dict(size=5), hovertemplate="%{y:.1f}%",
+                        name=LABEL.get(c, c), line=dict(color=cores.get(c), width=2),
+                        marker=dict(size=4), hovertemplate="%{y:.1f}%",
                     ))
-                fig.add_hline(y=META_AGUA, line_dash="dot", line_color="#64748b", line_width=1,
-                              annotation_text="Meta Água 99%", annotation_font_size=9)
-                fig.add_hline(y=META_ESGOTO, line_dash="dot", line_color="#64748b", line_width=1,
-                              annotation_text="Meta Esgoto 90%", annotation_font_size=9)
+                fig.add_hline(y=META_AGUA, line_dash="dot", line_color="#d1d5db", line_width=1,
+                              annotation_text="Meta Água 99%", annotation_font_size=8)
+                fig.add_hline(y=META_ESGOTO, line_dash="dot", line_color="#d1d5db", line_width=1,
+                              annotation_text="Meta Esgoto 90%", annotation_font_size=8)
                 fig.update_layout(
-                    height=300, margin=dict(l=10, r=10, t=10, b=10),
-                    legend=dict(orientation="h", y=-0.18, font=dict(size=9)),
+                    height=220, margin=dict(l=10, r=10, t=5, b=5),
+                    legend=dict(orientation="h", y=-0.25, font=dict(size=8)),
                     hovermode="x unified", yaxis=dict(range=[-5, 110]),
                     plot_bgcolor="rgba(0,0,0,0)",
                 )
-                t.plotly_chart(fig, config={"displayModeBar": False}, width="stretch")
+                st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
+                                key=f"card_evol_{key_prefix}_{mun}")
 
 
 # ── Mapa interativo ──
@@ -445,17 +538,18 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
     if invertido:
         idx_maior = df_mapa[indicador].idxmax()
         idx_menor = df_mapa[indicador].idxmin()
-        n_criticos = (df_mapa[indicador] > 50).sum()
+        n_abaixo_meta = (df_mapa[indicador] > 50).sum()
     else:
         idx_maior = df_mapa[indicador].idxmax()
         idx_menor = df_mapa[indicador].idxmin()
-        n_criticos = (df_mapa[indicador] < 50).sum()
+        n_abaixo_meta = (df_mapa[indicador] < 50).sum()
 
     mais_elevado = df_mapa.loc[idx_maior]
     menos_elevado = df_mapa.loc[idx_menor]
     label_ind = LABEL.get(indicador, indicador)
 
-    col_map, col_info = st.columns([2.2, 1])
+    MAP_HEIGHT = 560
+    col_map, col_info = st.columns([2, 1])
     selected_mun = None
 
     if geojson:
@@ -467,7 +561,7 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
             center={"lat": -22.25, "lon": -43.3}, zoom=6.5, opacity=0.85,
             labels={indicador: label_ind},
         )
-        fig.update_layout(height=560, margin=dict(l=0, r=0, t=0, b=0),
+        fig.update_layout(height=MAP_HEIGHT, margin=dict(l=0, r=0, t=0, b=0),
                           coloraxis_colorbar=dict(title="", thickness=15, len=0.6))
 
         event = col_map.plotly_chart(
@@ -486,19 +580,19 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
         if selected_mun:
             rows = df_atual[df_atual["nome_municipio"] == selected_mun]
             if not rows.empty:
-                _render_municipio_card(rows.iloc[0], df_atual, df_hist, container=col_info)
+                _render_municipio_card(rows.iloc[0], df_atual, df_hist, container=col_info, key_prefix="mapa")
         else:
             st.markdown(f"""
-<div class="insight" style="margin-top:0">
+<div style="border:1px solid #e5e7eb;border-radius:8px;padding:1.2rem;min-height:{MAP_HEIGHT}px;display:flex;flex-direction:column;justify-content:center">
     <strong>Resumo estadual - {label_ind}</strong><br><br>
     <span class="metric-mini"><span class="val">{media:.1f}</span><span class="lbl">Média</span></span>
     <span class="metric-mini"><span class="val">{mediana:.1f}</span><span class="lbl">Mediana</span></span><br>
     <span class="metric-mini"><span class="val">{std:.1f}</span><span class="lbl">Desvio padrão</span></span>
-    <span class="metric-mini"><span class="val">{n_criticos}</span><span class="lbl">Em situação crítica</span></span>
+    <span class="metric-mini"><span class="val">{n_abaixo_meta}</span><span class="lbl">Abaixo de 50%</span></span>
     <br><br>
     <strong>Maior índice:</strong> {mais_elevado['nome_municipio']} ({mais_elevado[indicador]:.1f})<br>
     <strong>Menor índice:</strong> {menos_elevado['nome_municipio']} ({menos_elevado[indicador]:.1f})<br><br>
-    <em style="font-size:.78rem;color:#94a3b8">Clique em um município no mapa para ver seu perfil detalhado.</em>
+    <em style="font-size:.75rem;color:#9ca3af">Clique em um município no mapa para ver seu perfil detalhado.</em>
 </div>
             """, unsafe_allow_html=True)
 
@@ -514,7 +608,7 @@ def render_perfil(df, df_atual, geojson, ultimo_ano):
     nomes = sorted(df_atual["nome_municipio"].dropna().unique())
     mun = st.selectbox("Município", nomes, index=nomes.index("Rio de Janeiro") if "Rio de Janeiro" in nomes else 0)
     row = df_atual[df_atual["nome_municipio"] == mun].iloc[0]
-    _render_municipio_card(row, df_atual, df_hist=df)
+    _render_municipio_card(row, df_atual, df_hist=df, key_prefix="perfil")
 
 
 # ── Ranking com porte ──
@@ -530,26 +624,32 @@ def render_ranking(df_atual, ultimo_ano):
     n = len(df_rank)
     cnt = df_rank["risco"].value_counts()
 
-    c1, c2, c3, c4 = st.columns(4)
-    for col, risco in zip([c1, c2, c3, c4], ["Adequado", "Regular", "Atenção", "Crítico"]):
-        v = cnt.get(risco, 0)
-        cor_r = COR_RISCO[risco]
+    n_adequado = cnt.get("Atendimento adequado", 0)
+    n_precario = cnt.get("Atendimento precário", 0)
+    n_deficit = sum(v for k, v in cnt.items() if "Déficit" in k)
+
+    c1, c2, c3 = st.columns(3)
+    for col, (lbl, val, cor) in zip([c1, c2, c3], [
+        ("Atendimento adequado", n_adequado, "#16a34a"),
+        ("Atendimento precário", n_precario, "#ca8a04"),
+        ("Com algum déficit", n_deficit, "#dc2626"),
+    ]):
         col.markdown(f"""
-        <div style="text-align:center;padding:.7rem;border-radius:10px;background:{cor_r}12;border:1px solid {cor_r}30">
-            <div style="font-size:2rem;font-weight:900;color:{cor_r}">{v}</div>
-            <div style="font-size:.72rem;color:#64748b;text-transform:uppercase">{risco}</div>
+        <div style="text-align:center;padding:.7rem;border-radius:10px;background:{cor}12;border:1px solid {cor}30">
+            <div style="font-size:2rem;font-weight:900;color:{cor}">{val}</div>
+            <div style="font-size:.72rem;color:#64748b;text-transform:uppercase">{lbl}</div>
         </div>
         """, unsafe_allow_html=True)
 
     st.markdown(f"""
     <div class="insight">
         <strong>Metodologia:</strong> O índice composto é calculado como a <strong>média aritmética</strong> de 4 indicadores:
-        atendimento de água, coleta de esgoto, tratamento de esgoto e cobertura de resíduos sólidos (escala 0–100).
-        Municípios com dados disponíveis em pelo menos 2 dos 4 indicadores são incluídos.
-        Dos <strong>{n} municípios</strong> avaliados em {ultimo_ano},
-        <strong>{cnt.get("Crítico", 0)}</strong> estão em situação
-        <strong style="color:#dc2626">crítica</strong> (índice &lt; 30) e
-        <strong>{cnt.get("Adequado", 0)}</strong> são <strong style="color:#16a34a">adequados</strong> (índice ≥ 70).
+        atendimento de água, coleta de esgoto, tratamento de esgoto e cobertura de resíduos sólidos (escala 0-100).
+        Municípios com dados disponíveis em pelo menos 2 dos 4 indicadores são incluídos.<br><br>
+        <strong>Classificação (PLANSAB):</strong> Dos <strong>{n} municípios</strong> avaliados em {ultimo_ano},
+        <strong>{n_adequado}</strong> têm <strong style="color:#16a34a">atendimento adequado</strong> e
+        <strong>{n_deficit}</strong> apresentam algum tipo de <strong style="color:#dc2626">déficit</strong>
+        (esgotamento sanitário, abastecimento de água, resíduos sólidos ou estrutural).
     </div>
     """, unsafe_allow_html=True)
 
@@ -577,18 +677,16 @@ def render_ranking(df_atual, ultimo_ano):
                           margin=dict(l=0, r=10, t=10, b=0))
         st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch", key="rank_maior")
 
-    criticos = df_vis[df_vis["risco"] == "Crítico"]
-    if not criticos.empty:
-        nomes = ", ".join(sorted(criticos["nome_municipio"].tolist()))
-        st.markdown(f'<div class="insight alert"><strong>Municípios em situação crítica:</strong> {nomes}</div>',
+    com_deficit = df_vis[df_vis["risco"].str.contains("Déficit", na=False)]
+    if not com_deficit.empty:
+        nomes = ", ".join(sorted(com_deficit.nsmallest(10, "score")["nome_municipio"].tolist()))
+        st.markdown(f'<div class="insight alert"><strong>Municípios com déficit mais severo:</strong> {nomes}</div>',
                     unsafe_allow_html=True)
 
 
 # ── Descompasso Água vs Esgoto ──
 def render_gap(df_atual, ultimo_ano):
-    st.markdown('<div class="section-title">Descompasso entre Água e Esgoto</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="section-subtitle">Diferença entre cobertura de abastecimento de água e coleta de esgoto em {ultimo_ano}</div>',
-                unsafe_allow_html=True)
+    st.markdown('<div class="section-title">Diferença entre cobertura de abastecimento de água e coleta de esgoto em 2024</div>', unsafe_allow_html=True)
 
     df_gap = df_atual.dropna(subset=["indice_atendimento_total_agua", "indice_coleta_esgoto"]).copy()
     df_gap["gap"] = df_gap["indice_atendimento_total_agua"] - df_gap["indice_coleta_esgoto"]
@@ -652,8 +750,7 @@ Em {ultimo_ano}, a perda média no estado do RJ foi de **{media_perda:.1f}%**.
 O município com maior perda é **{mais_perda['nome_municipio']}** ({mais_perda['indice_perda_distribuicao_agua']:.0f}%),
 enquanto **{menos_perda['nome_municipio']}** registra a menor ({menos_perda['indice_perda_distribuicao_agua']:.0f}%).
 
-**{acima_40} municípios** perdem mais de 40% da água tratada -
-um patamar considerado elevado pelo próprio SNIS.
+**{acima_40} municípios** perdem mais de 40% da água tratada.
     """)
 
     d_both = d.dropna(subset=["investimento_per_capita", "indice_perda_distribuicao_agua"])
@@ -666,10 +763,13 @@ um patamar considerado elevado pelo próprio SNIS.
             labels={"investimento_per_capita": "Investimento per capita (R$/hab)",
                     "indice_perda_distribuicao_agua": "Perda na Distribuição (%)",
                     "populacao_total_residente": "População"})
+        fig.add_hrect(y0=25, y1=d_both["indice_perda_distribuicao_agua"].max() + 5,
+                      fillcolor="#dc2626", opacity=0.06, line_width=0)
+        fig.add_hline(y=25, line_dash="solid", line_color="#dc2626", line_width=1.5,
+                      annotation_text="Limite aceitável 25% (ANA/SNIS)", annotation_font_size=9,
+                      annotation_position="top left")
         fig.update_layout(height=450, margin=dict(l=10, r=10, t=10, b=10),
                           coloraxis_colorbar=dict(title="Perda %", thickness=12, len=0.5))
-        fig.add_hline(y=40, line_dash="dash", line_color="#dc2626", line_width=1,
-                      annotation_text="Patamar elevado 40%", annotation_font_size=9)
         col_g.plotly_chart(fig, config={"displayModeBar": False}, width="stretch", key="perda_scatter")
     else:
         fig = px.bar(d.nlargest(25, "indice_perda_distribuicao_agua"),
@@ -681,6 +781,22 @@ um patamar considerado elevado pelo próprio SNIS.
 
     col_g.markdown(f'<div class="source">Fonte: SNIS ({ultimo_ano}). Tamanho das bolhas proporcional à população.</div>',
                    unsafe_allow_html=True)
+
+    acima_25 = (d["indice_perda_distribuicao_agua"] > 25).sum()
+    vol_produzido = d["volume_agua_produzido"].sum() if "volume_agua_produzido" in d.columns else 0
+    excesso_perda = (d["indice_perda_distribuicao_agua"].mean() - 25) / 100
+    vol_perdido_excesso = vol_produzido * excesso_perda if excesso_perda > 0 else 0
+    consumo_per_capita_dia = 0.15
+    pop_equiv = vol_perdido_excesso / (consumo_per_capita_dia * 365) if consumo_per_capita_dia > 0 else 0
+
+    st.markdown(f"""
+    <div class="insight alert">
+        <strong>{acima_25} municípios</strong> estão acima do limite de 25% de perda (referência ANA/SNIS), que indica
+        ineficiência operacional. Com perda média de <strong>{media_perda:.0f}%</strong>, o volume desperdiçado acima
+        do aceitável equivale ao abastecimento de aproximadamente
+        <strong>{pop_equiv/1e6:.1f} milhões de pessoas</strong>.
+    </div>
+    """, unsafe_allow_html=True)
 
     hist = df[df["ano"].between(2014, ultimo_ano)]
     stats = hist.groupby("ano")["indice_perda_distribuicao_agua"].mean().dropna()
@@ -711,7 +827,7 @@ def render_evolucao(df, ultimo_ano):
         ("indice_atendimento_total_agua", "Atendimento de Água", "#3b82f6", META_AGUA),
         ("indice_coleta_esgoto", "Coleta de Esgoto", "#f97316", META_ESGOTO),
         ("indice_tratamento_esgoto", "Tratamento de Esgoto", "#22c55e", None),
-        ("indice_perda_distribuicao_agua", "Perda na Distribuição", "#ef4444", None),
+        ("indice_perda_distribuicao_agua", "Perda na Distribuição", "#ef4444", 25),
     ]
     cols = st.columns(2)
     df_hist = df[df["ano"].between(2014, ultimo_ano)]
@@ -733,8 +849,9 @@ def render_evolucao(df, ultimo_ano):
         fig.add_trace(go.Scatter(x=stats.index, y=stats["median"], mode="lines",
                                  line=dict(color="#94a3b8", width=1, dash="dot"), name="Mediana"))
         if meta:
+            label_meta = f"Limite aceitável: {meta}%" if "perda" in col_name else f"Meta {ANO_META}: {meta}%"
             fig.add_hline(y=meta, line_dash="dash", line_color="#dc2626", line_width=1,
-                          annotation_text=f"Meta {ANO_META}: {meta}%", annotation_font_size=9)
+                          annotation_text=label_meta, annotation_font_size=9)
         fig.update_layout(title=dict(text=titulo, font=dict(size=13, color="#0c1d36")),
                           height=300, margin=dict(l=10, r=10, t=40, b=10),
                           yaxis=dict(range=[-5, 110] if "perda" not in col_name else None),
@@ -746,13 +863,35 @@ def render_evolucao(df, ultimo_ano):
                   df_hist[df_hist["ano"] == 2014]["indice_atendimento_total_agua"].mean())
     delta_esgoto = (df_hist[df_hist["ano"] == ultimo_ano]["indice_coleta_esgoto"].mean() -
                     df_hist[df_hist["ano"] == 2014]["indice_coleta_esgoto"].mean())
+    n_anos = ultimo_ano - 2014
+    ritmo_agua = abs(delta_agua) / n_anos if n_anos > 0 else 0
+    ritmo_esgoto = abs(delta_esgoto) / n_anos if n_anos > 0 else 0
+
+    media_agua_atual = df_hist[df_hist["ano"] == ultimo_ano]["indice_atendimento_total_agua"].mean()
+    media_esgoto_atual = df_hist[df_hist["ano"] == ultimo_ano]["indice_coleta_esgoto"].mean()
+    necessario_agua = (99 - media_agua_atual) / (2033 - ultimo_ano) if (2033 - ultimo_ano) > 0 else 0
+    necessario_esgoto = (90 - media_esgoto_atual) / (2033 - ultimo_ano) if (2033 - ultimo_ano) > 0 else 0
+    fator_insuf = necessario_esgoto / ritmo_esgoto if ritmo_esgoto > 0 else 0
+
+    n_estagnados = 0
+    for _, g in df_hist[["ano", "id_municipio", "indice_coleta_esgoto"]].dropna().groupby("id_municipio"):
+        if len(g) >= 3:
+            anos_g = g["ano"].values.astype(float)
+            pesos_g = np.exp(0.3 * (anos_g - anos_g.min()))
+            coef = np.polyfit(anos_g, g["indice_coleta_esgoto"].values, 1, w=pesos_g)
+            if coef[0] <= 0:
+                n_estagnados += 1
+
     st.markdown(f"""
     <div class="insight">
-        Entre 2014 e {ultimo_ano}, o atendimento médio de água variou
-        <strong>{abs(delta_agua):.1f} pp</strong> ({"avanço" if delta_agua > 0 else "redução"}),
-        enquanto a coleta de esgoto variou <strong>{abs(delta_esgoto):.1f} pp</strong>
-        ({"avanço" if delta_esgoto > 0 else "redução"}).
-        {"<br><strong>O ritmo atual é insuficiente para atingir as metas do Marco Legal até 2033.</strong>" if abs(delta_esgoto) < 5 else ""}
+        Em {n_anos} anos, a cobertura média de água avançou <strong>{abs(delta_agua):.1f} pontos percentuais</strong>
+        e a coleta de esgoto apenas <strong>{abs(delta_esgoto):.1f} pp</strong> entre os municípios do RJ
+        - menos de meio ponto por ano.
+        Para cumprir o Marco Legal até 2033, seriam necessários avanços médios de
+        <strong>~{necessario_agua:.1f} pp/ano</strong> em água e <strong>~{necessario_esgoto:.1f} pp/ano</strong> em esgoto.
+        O ritmo atual é <strong>{fator_insuf:.0f}x insuficiente</strong> para o esgoto.
+        Dos 92 municípios, <strong>{n_estagnados}</strong> estão em retrocesso ou estagnados em coleta de esgoto
+        - sem reversão de trajetória, descumprirão a lei.
     </div>
     """, unsafe_allow_html=True)
 
@@ -762,10 +901,11 @@ def render_marco_legal(df, ultimo_ano):
     st.markdown('<div class="section-title">Projeção para o Marco Legal 2033</div>', unsafe_allow_html=True)
     st.markdown(f"""
     <div class="insight">
-        <strong>Metodologia:</strong> Para cada município, é calculada a <strong>tendência linear</strong>
-        (regressão de 1º grau) com base nos dados dos últimos 10 anos (2014-{ultimo_ano}).
-        A projeção indica qual seria o valor do indicador em {ANO_META} se a tendência atual se mantiver.
-        Municípios em <strong style="color:#7c3aed">retrocesso</strong> apresentam tendência de queda.
+        <strong>Metodologia:</strong> Para cada município, é calculada a <strong>tendência linear ponderada</strong>
+        (Weighted Least Squares) com base nos dados de 2014 a {ultimo_ano}.
+        Anos recentes recebem peso exponencialmente maior, priorizando a trajetória mais atual do município.
+        A projeção indica qual seria o valor do indicador em {ANO_META} se a tendência recente se mantiver.
+        Municípios em <strong style="color:#7c3aed">retrocesso</strong> apresentam tendência de queda nos últimos anos.
     </div>
     """, unsafe_allow_html=True)
 
@@ -780,7 +920,9 @@ def render_marco_legal(df, ultimo_ano):
         if len(g) < 3:
             continue
         nome = g["nome_municipio"].iloc[0]
-        coef = np.polyfit(g["ano"].values.astype(float), g[indicador].values, 1)
+        anos_m = g["ano"].values.astype(float)
+        pesos_m = np.exp(0.3 * (anos_m - anos_m.min()))
+        coef = np.polyfit(anos_m, g[indicador].values, 1, w=pesos_m)
         taxa = coef[0]
         atual = float(np.polyval(coef, ultimo_ano))
         proj = float(np.polyval(coef, ANO_META))
@@ -805,25 +947,14 @@ def render_marco_legal(df, ultimo_ano):
     cor_st = {"Já atingiu": "#16a34a", "No prazo": "#2563eb",
               "Não atingirá": "#dc2626", "Em retrocesso": "#7c3aed"}
 
-    cc = st.columns(4)
-    for col, status in zip(cc, ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]):
-        n = (df_p["Status"] == status).sum()
-        c = cor_st[status]
-        col.markdown(f"""
-        <div style="text-align:center;padding:.6rem;border-radius:10px;background:{c}10;border:1px solid {c}25">
-            <div style="font-size:1.8rem;font-weight:900;color:{c}">{n}</div>
-            <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">{status}</div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    status_list = ["Já atingiu", "No prazo", "Não atingirá", "Em retrocesso"]
-    for status in status_list:
+    def _render_marco_chart(status, container):
         df_s = df_p[df_p["Status"] == status].sort_values("Projeção 2033 (%)")
         if df_s.empty:
-            continue
+            container.info(f"Nenhum município em \"{status}\"")
+            return
         cor = cor_st[status]
-        st.markdown(f'<div style="margin-top:1.2rem;font-weight:700;color:{cor}">{status} ({len(df_s)} municípios)</div>',
-                    unsafe_allow_html=True)
+        container.markdown(f'<div style="margin-top:.5rem;font-weight:700;color:{cor}">{status} ({len(df_s)})</div>',
+                           unsafe_allow_html=True)
         fig = px.bar(df_s, x="Projeção 2033 (%)", y="Município",
                      orientation="h",
                      height=max(200, len(df_s) * 22))
@@ -831,8 +962,16 @@ def render_marco_legal(df, ultimo_ano):
         fig.add_vline(x=meta, line_dash="dash", line_color="#dc2626",
                       annotation_text=f"Meta {meta}%", annotation_font_size=9)
         fig.update_layout(margin=dict(l=0, r=10, t=10, b=10), showlegend=False)
-        st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
-                        key=f"marco_{indicador}_{status}")
+        container.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
+                               key=f"marco_{indicador}_{status}")
+
+    col_a, col_b = st.columns(2)
+    _render_marco_chart("Já atingiu", col_a)
+    _render_marco_chart("No prazo", col_b)
+
+    col_c, col_d = st.columns(2)
+    _render_marco_chart("Não atingirá", col_c)
+    _render_marco_chart("Em retrocesso", col_d)
 
     nao = df_p[df_p["Status"].isin(["Não atingirá", "Em retrocesso"])]
     if not nao.empty:
@@ -898,19 +1037,30 @@ def compute_clusters(df_atual):
 
 
 def _nome_cluster(profile_row, cluster_id):
-    """Nomeia o cluster com base no perfil médio."""
+    """
+    Nomeia o cluster com base no perfil médio.
+    Terminologia PLANSAB (Lei 11.445/2007, atualizada pela Lei 14.026/2020).
+    """
     agua = profile_row.get("indice_atendimento_total_agua", 0)
     esgoto = profile_row.get("indice_coleta_esgoto", 0)
-    pct_urb = profile_row.get("pct_populacao_urbana", 50)
     residuos = profile_row.get("cobertura_residuos_solidos", 0)
+    pct_urb = profile_row.get("pct_populacao_urbana", 50)
+    rural = pct_urb < 50
 
-    if agua > 70 and esgoto > 60 and residuos > 60:
-        return "Saneamento avançado"
-    if agua > 60 and esgoto < 40:
-        return "Água adequada, esgoto deficiente"
-    if pct_urb < 60:
-        return "Município rural vulnerável"
-    return "Déficit estrutural"
+    if agua >= 90 and esgoto >= 75 and residuos >= 80:
+        return "Atendimento adequado consolidado"
+    if agua >= 70 and esgoto < 50:
+        if esgoto < 30:
+            return "Déficit severo de esgotamento sanitário"
+        return "Déficit de esgotamento sanitário"
+    if agua < 60:
+        return "Déficit de abastecimento de água"
+    n_deficit = sum([agua < 70, esgoto < 50, residuos < 50])
+    if n_deficit >= 2:
+        if rural:
+            return "Déficit estrutural - município rural vulnerável"
+        return "Déficit estrutural de saneamento"
+    return "Atendimento precário"
 
 
 def render_clusters(df_atual, geojson, ultimo_ano):
@@ -1077,43 +1227,43 @@ def main():
     df_atual = enrich_df(df_atual)
 
     tabs = st.tabs([
-        # "Visão Geral",
-        # "Perfil do Município",
-        # "Classificação",
+        "Visão Geral",
+        "Perfil do Município",
+        "Classificação",
         "Água vs Esgoto",
         "Perdas e Investimento",
         "Evolução Temporal",
-        "Marco Legal 2033",
+        # "Marco Legal 2033",
         "Agrupamento",
         "Dados",
     ])
 
-    # with tabs[X]:
-    #     render_hero(df_atual, ultimo_ano)
-    #     render_mapa(df_atual, df, geo, ultimo_ano, key_suffix="home")
-
-    # with tabs[X]:
-    #     render_perfil(df, df_atual, geo, ultimo_ano)
-
-    # with tabs[X]:
-    #     render_ranking(df_atual, ultimo_ano)
-
     with tabs[0]:
-        render_gap(df_atual, ultimo_ano)
+        render_hero(df_atual, ultimo_ano)
+        render_mapa(df_atual, df, geo, ultimo_ano, key_suffix="home")
 
-    with tabs[1]:
-        render_perdas(df, df_atual, ultimo_ano)
+    with tabs[1]:   
+        render_perfil(df, df_atual, geo, ultimo_ano)
 
     with tabs[2]:
-        render_evolucao(df, ultimo_ano)
+        render_ranking(df_atual, ultimo_ano)
 
     with tabs[3]:
-        render_marco_legal(df, ultimo_ano)
+        render_gap(df_atual, ultimo_ano)
 
     with tabs[4]:
-        render_clusters(df_atual, geo, ultimo_ano)
+        render_perdas(df, df_atual, ultimo_ano)
 
     with tabs[5]:
+        render_evolucao(df, ultimo_ano)
+
+    # with tabs[X]:
+    #     render_marco_legal(df, ultimo_ano)
+
+    with tabs[3]:
+        render_clusters(df_atual, geo, ultimo_ano)
+
+    with tabs[6]:
         render_dados(df)
 
     render_footer()
