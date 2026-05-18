@@ -24,78 +24,73 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
     html, body, [class*="st-"] { font-family: 'Inter', sans-serif; }
+    .stApp { background: #ffffff; }
     .block-container { padding-top: .5rem; max-width: 1280px; }
     .hero {
-        background: linear-gradient(135deg, #0c1d36 0%, #183b5c 45%, #1a5276 100%);
-        color: white; padding: 2.5rem 2.5rem 2rem; border-radius: 16px;
-        margin-bottom: 1.5rem; position: relative; overflow: hidden;
+        background: #fff; color: #1a1a1a; padding: 1.5rem 0 1rem;
+        margin-bottom: 1rem;
     }
-    .hero::after {
-        content: ''; position: absolute; top: -40%; right: -10%;
-        width: 450px; height: 450px; border-radius: 50%;
-        background: radial-gradient(circle, rgba(33,150,243,.12) 0%, transparent 70%);
-    }
-    .hero h1 { font-size: 2.2rem; font-weight: 900; margin: 0 0 .25rem; letter-spacing: -.5px; }
-    .hero .sub { opacity: .7; font-size: .9rem; margin-bottom: 1.2rem; }
-    .bn-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: .5rem 0 0; }
+    .hero h1 { font-size: 1.6rem; font-weight: 800; margin: 0 0 .2rem; color: #1a1a1a; }
+    .hero .sub { color: #6b7280; font-size: .8rem; margin-bottom: 1rem; }
+    .bn-row { display: flex; gap: .6rem; flex-wrap: wrap; margin: 0; }
     .bn-card {
-        flex: 1 1 170px; background: rgba(255,255,255,.07);
-        border-radius: 12px; padding: 1.1rem 1rem;
-        backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.1);
+        flex: 1 1 140px; background: #fff;
+        border-radius: 8px; padding: .9rem .8rem;
+        border: 1px solid #e5e7eb;
     }
-    .bn-card .number { font-size: 2rem; font-weight: 900; line-height: 1.1; }
-    .bn-card .label { font-size: .72rem; opacity: .65; margin-top: .25rem; text-transform: uppercase; letter-spacing: .3px; }
+    .bn-card .number { font-size: 1.6rem; font-weight: 800; line-height: 1.1; color: #1a1a1a; }
+    .bn-card .label { font-size: .65rem; color: #6b7280; margin-top: .2rem; text-transform: uppercase; letter-spacing: .2px; }
     .section-title {
-        font-size: 1.15rem; font-weight: 700; color: #0c1d36;
-        padding-left: .75rem;
-        margin: 2rem 0 .75rem;
+        font-size: 1rem; font-weight: 700; color: #1a1a1a;
+        margin: 1.5rem 0 .4rem;
     }
-    .section-subtitle { font-size: .85rem; color: #64748b; margin: -.5rem 0 1rem 1rem; }
+    .section-subtitle { font-size: .8rem; color: #6b7280; margin: 0 0 .8rem 0; }
     .insight {
-        background: #f0f4f8; border-radius: 10px;
-        padding: 1rem 1.2rem; margin: .75rem 0; font-size: .86rem;
-        line-height: 1.6; color: #334155;
+        background: #f8fafc; border-radius: 8px;
+        padding: .9rem 1rem; margin: .6rem 0; font-size: .82rem;
+        line-height: 1.6; color: #374151;
     }
     .insight.alert { background: #fef2f2; }
     .insight.warn  { background: #fffbeb; }
     .insight.ok    { background: #f0fdf4; }
-    .insight strong { color: #0c1d36; }
+    .insight strong { color: #1a1a1a; }
     .profile-header {
-        background: linear-gradient(135deg, #0c1d36, #1a5276);
-        color: #fff; border-radius: 14px; padding: 2rem 2rem 1.5rem;
-        margin-bottom: 1.2rem;
+        background: #fff; color: #1a1a1a; border-radius: 8px;
+        padding: 1.2rem; margin-bottom: .8rem;
+        border: 1px solid #e5e7eb;
     }
-    .profile-header h2 { font-size: 1.6rem; font-weight: 800; margin: 0; }
+    .profile-header h2 { font-size: 1.3rem; font-weight: 800; margin: 0; color: #1a1a1a; }
     .profile-header .badge {
-        display: inline-block; margin-top: .5rem; padding: .2rem .7rem;
-        border-radius: 6px; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+        display: inline-block; margin-top: .4rem; padding: .2rem .6rem;
+        border-radius: 4px; font-size: .7rem; font-weight: 700; text-transform: uppercase;
     }
     .profile-grid {
-        display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: .6rem; margin: 1rem 0;
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: .4rem; margin: .6rem 0;
     }
     .profile-metric {
-        background: rgba(255,255,255,.06); border-radius: 10px;
-        padding: .8rem .7rem; border: 1px solid rgba(255,255,255,.08);
+        background: #fff; border-radius: 6px;
+        padding: .6rem .5rem; border: 1px solid #e5e7eb;
     }
-    .profile-metric .val { font-size: 1.3rem; font-weight: 800; }
-    .profile-metric .lbl { font-size: .65rem; opacity: .6; text-transform: uppercase; letter-spacing: .3px; margin-top: .15rem; }
-    .source { font-size: .7rem; color: #94a3b8; margin-top: .5rem; }
+    .profile-metric .val { font-size: 1.1rem; font-weight: 800; color: #1a1a1a; }
+    .profile-metric .lbl { font-size: .6rem; color: #6b7280; text-transform: uppercase; letter-spacing: .2px; margin-top: .1rem; }
+    .source { font-size: .68rem; color: #9ca3af; margin-top: .4rem; }
     .footer {
-        background: #0c1d36; color: rgba(255,255,255,.6);
-        padding: 2rem; border-radius: 14px; margin-top: 3rem;
-        font-size: .78rem; line-height: 1.7;
+        background: #f8fafc; color: #6b7280;
+        padding: 1.2rem; border-radius: 8px; margin-top: 2rem;
+        font-size: .72rem; line-height: 1.6;
     }
-    .footer a { color: #60a5fa; }
-    .footer h4 { color: #fff; margin: 0 0 .5rem; font-size: .9rem; }
+    .footer a { color: #c2703a; }
+    .footer h4 { color: #1a1a1a; margin: 0 0 .4rem; font-size: .82rem; }
     #MainMenu, footer, header { visibility: hidden; }
     .stDeployButton { display: none; }
     [data-testid="stExpander"] details summary span[data-testid="stMarkdownContainer"] p { display: inline; }
-    .stTabs [data-baseweb="tab-list"] { gap: 0; }
-    .stTabs [data-baseweb="tab"] { font-size: .82rem; font-weight: 600; padding: .6rem 1.2rem; }
-    .metric-mini { display: inline-flex; align-items: baseline; gap: .4rem; margin-right: 1.5rem; margin-bottom: .5rem; }
-    .metric-mini .val { font-size: 1.6rem; font-weight: 800; color: #0c1d36; }
-    .metric-mini .lbl { font-size: .78rem; color: #64748b; }
+    .stTabs [data-baseweb="tab-list"] { gap: 0; border-bottom: 1px solid #e5e7eb; }
+    .stTabs [data-baseweb="tab"] { font-size: .78rem; font-weight: 600; padding: .5rem 1rem; color: #6b7280; }
+    .stTabs [data-baseweb="tab"][aria-selected="true"] { color: #c2703a; border-bottom: 2px solid #c2703a; }
+    .metric-mini { display: inline-flex; align-items: baseline; gap: .3rem; margin-right: 1.2rem; margin-bottom: .4rem; }
+    .metric-mini .val { font-size: 1.4rem; font-weight: 800; color: #1a1a1a; }
+    .metric-mini .lbl { font-size: .72rem; color: #6b7280; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -405,7 +400,7 @@ def render_hero(df_atual, ultimo_ano):
 
 
 # ── Perfil reutilizável ──
-def _render_municipio_card(row, df_atual, df_hist=None, container=None):
+def _render_municipio_card(row, df_atual, df_hist=None, container=None, key_prefix=""):
     t = container or st
     mun = row.get("nome_municipio", "")
     score = row.get("score", np.nan)
@@ -456,39 +451,33 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
     media_agua = df_atual["indice_atendimento_total_agua"].mean()
     media_esgoto = df_atual["indice_coleta_esgoto"].mean()
 
-    interpretacoes = []
+    linhas = []
     if pd.notna(agua):
-        if agua >= META_AGUA:
-            interpretacoes.append(f"Já atingiu a meta do Marco Legal para água ({META_AGUA}%).")
-        elif agua >= media_agua:
-            interpretacoes.append(f"Atendimento de água ({agua:.1f}%) acima da média estadual ({media_agua:.1f}%), mas ainda distante da meta de {META_AGUA}%.")
-        else:
-            interpretacoes.append(f"Atendimento de água ({agua:.1f}%) <strong>abaixo da média estadual</strong> ({media_agua:.1f}%).")
-
+        cmp_agua = "acima" if agua >= media_agua else "abaixo"
+        cor_agua = "#16a34a" if agua >= media_agua else "#dc2626"
+        linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6">'
+                      f'<span>Água</span>'
+                      f'<span><strong>{agua:.1f}%</strong> <span style="color:{cor_agua};font-size:.75rem">{cmp_agua} da média ({media_agua:.1f}%)</span></span></div>')
     if pd.notna(esgoto):
-        if esgoto >= META_ESGOTO:
-            interpretacoes.append(f"Coleta de esgoto ({esgoto:.1f}%) atinge a meta do Marco Legal ({META_ESGOTO}%).")
-        elif esgoto < 30:
-            interpretacoes.append(f"Coleta de esgoto de apenas <strong>{esgoto:.1f}%</strong> - situação que demanda atenção prioritária.")
-        else:
-            cmp = "acima" if esgoto >= media_esgoto else "<strong>abaixo</strong>"
-            interpretacoes.append(f"Coleta de esgoto ({esgoto:.1f}%) {cmp} da média estadual ({media_esgoto:.1f}%).")
-
+        cmp_esgoto = "acima" if esgoto >= media_esgoto else "abaixo"
+        cor_esgoto = "#16a34a" if esgoto >= media_esgoto else "#dc2626"
+        linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6">'
+                      f'<span>Esgoto</span>'
+                      f'<span><strong>{esgoto:.1f}%</strong> <span style="color:{cor_esgoto};font-size:.75rem">{cmp_esgoto} da média ({media_esgoto:.1f}%)</span></span></div>')
     if pd.notna(esgoto) and pd.notna(pop) and pop > 0:
         sem_esgoto = pop * (1 - esgoto / 100)
         if sem_esgoto > 1000:
-            interpretacoes.append(f"Aproximadamente <strong>{fmt_pop(sem_esgoto, abrev=False)} habitantes</strong> sem coleta de esgoto.")
+            linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid #f3f4f6">'
+                          f'<span>Sem coleta de esgoto</span>'
+                          f'<span><strong style="color:#dc2626">{fmt_pop(sem_esgoto, abrev=False)} hab</strong></span></div>')
+    if pd.notna(perda) and perda > 25:
+        cor_perda = "#dc2626" if perda > 40 else "#d97706"
+        linhas.append(f'<div style="display:flex;justify-content:space-between;padding:.4rem 0">'
+                      f'<span>Perda na distribuição</span>'
+                      f'<span><strong style="color:{cor_perda}">{perda:.0f}%</strong> <span style="font-size:.75rem;color:{cor_perda}">acima do limite (25%)</span></span></div>')
 
-    gap = (agua - esgoto) if pd.notna(agua) and pd.notna(esgoto) else np.nan
-    if pd.notna(gap) and gap > 30:
-        interpretacoes.append(f"Descompasso de <strong>{gap:.0f} pontos percentuais</strong> entre água e esgoto.")
-    if pd.notna(perda) and perda > 40:
-        interpretacoes.append(f"Perda na distribuição de <strong>{perda:.0f}%</strong> - patamar considerado elevado pelo SNIS.")
-
-    if interpretacoes:
-        body = " · ".join(interpretacoes)
-        tipo = "alert" if any("prioritária" in i for i in interpretacoes) else ""
-        t.markdown(f'<div class="insight {tipo}" style="font-size:.82rem">{body}</div>', unsafe_allow_html=True)
+    if linhas:
+        t.markdown(f'<div style="font-size:.82rem;margin:.5rem 0">{"".join(linhas)}</div>', unsafe_allow_html=True)
 
     if df_hist is not None:
         hist = df_hist[df_hist["nome_municipio"] == mun].sort_values("ano")
@@ -504,20 +493,21 @@ def _render_municipio_card(row, df_atual, df_hist=None, container=None):
                     s = hist[["ano", c]].dropna()
                     fig.add_trace(go.Scatter(
                         x=s["ano"], y=s[c], mode="lines+markers",
-                        name=LABEL.get(c, c), line=dict(color=cores.get(c), width=2.5),
-                        marker=dict(size=5), hovertemplate="%{y:.1f}%",
+                        name=LABEL.get(c, c), line=dict(color=cores.get(c), width=2),
+                        marker=dict(size=4), hovertemplate="%{y:.1f}%",
                     ))
-                fig.add_hline(y=META_AGUA, line_dash="dot", line_color="#64748b", line_width=1,
-                              annotation_text="Meta Água 99%", annotation_font_size=9)
-                fig.add_hline(y=META_ESGOTO, line_dash="dot", line_color="#64748b", line_width=1,
-                              annotation_text="Meta Esgoto 90%", annotation_font_size=9)
+                fig.add_hline(y=META_AGUA, line_dash="dot", line_color="#d1d5db", line_width=1,
+                              annotation_text="Meta Água 99%", annotation_font_size=8)
+                fig.add_hline(y=META_ESGOTO, line_dash="dot", line_color="#d1d5db", line_width=1,
+                              annotation_text="Meta Esgoto 90%", annotation_font_size=8)
                 fig.update_layout(
-                    height=300, margin=dict(l=10, r=10, t=10, b=10),
-                    legend=dict(orientation="h", y=-0.18, font=dict(size=9)),
+                    height=220, margin=dict(l=10, r=10, t=5, b=5),
+                    legend=dict(orientation="h", y=-0.25, font=dict(size=8)),
                     hovermode="x unified", yaxis=dict(range=[-5, 110]),
                     plot_bgcolor="rgba(0,0,0,0)",
                 )
-                t.plotly_chart(fig, config={"displayModeBar": False}, width="stretch")
+                st.plotly_chart(fig, config={"displayModeBar": False}, width="stretch",
+                                key=f"card_evol_{key_prefix}_{mun}")
 
 
 # ── Mapa interativo ──
@@ -558,7 +548,8 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
     menos_elevado = df_mapa.loc[idx_menor]
     label_ind = LABEL.get(indicador, indicador)
 
-    col_map, col_info = st.columns([2.2, 1])
+    MAP_HEIGHT = 560
+    col_map, col_info = st.columns([2, 1])
     selected_mun = None
 
     if geojson:
@@ -570,7 +561,7 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
             center={"lat": -22.25, "lon": -43.3}, zoom=6.5, opacity=0.85,
             labels={indicador: label_ind},
         )
-        fig.update_layout(height=560, margin=dict(l=0, r=0, t=0, b=0),
+        fig.update_layout(height=MAP_HEIGHT, margin=dict(l=0, r=0, t=0, b=0),
                           coloraxis_colorbar=dict(title="", thickness=15, len=0.6))
 
         event = col_map.plotly_chart(
@@ -589,10 +580,10 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
         if selected_mun:
             rows = df_atual[df_atual["nome_municipio"] == selected_mun]
             if not rows.empty:
-                _render_municipio_card(rows.iloc[0], df_atual, df_hist, container=col_info)
+                _render_municipio_card(rows.iloc[0], df_atual, df_hist, container=col_info, key_prefix="mapa")
         else:
             st.markdown(f"""
-<div class="insight" style="margin-top:0">
+<div style="border:1px solid #e5e7eb;border-radius:8px;padding:1.2rem;min-height:{MAP_HEIGHT}px;display:flex;flex-direction:column;justify-content:center">
     <strong>Resumo estadual - {label_ind}</strong><br><br>
     <span class="metric-mini"><span class="val">{media:.1f}</span><span class="lbl">Média</span></span>
     <span class="metric-mini"><span class="val">{mediana:.1f}</span><span class="lbl">Mediana</span></span><br>
@@ -601,7 +592,7 @@ def render_mapa(df_atual, df_hist, geojson, ultimo_ano, key_suffix=""):
     <br><br>
     <strong>Maior índice:</strong> {mais_elevado['nome_municipio']} ({mais_elevado[indicador]:.1f})<br>
     <strong>Menor índice:</strong> {menos_elevado['nome_municipio']} ({menos_elevado[indicador]:.1f})<br><br>
-    <em style="font-size:.78rem;color:#94a3b8">Clique em um município no mapa para ver seu perfil detalhado.</em>
+    <em style="font-size:.75rem;color:#9ca3af">Clique em um município no mapa para ver seu perfil detalhado.</em>
 </div>
             """, unsafe_allow_html=True)
 
@@ -617,7 +608,7 @@ def render_perfil(df, df_atual, geojson, ultimo_ano):
     nomes = sorted(df_atual["nome_municipio"].dropna().unique())
     mun = st.selectbox("Município", nomes, index=nomes.index("Rio de Janeiro") if "Rio de Janeiro" in nomes else 0)
     row = df_atual[df_atual["nome_municipio"] == mun].iloc[0]
-    _render_municipio_card(row, df_atual, df_hist=df)
+    _render_municipio_card(row, df_atual, df_hist=df, key_prefix="perfil")
 
 
 # ── Ranking com porte ──
@@ -1236,43 +1227,43 @@ def main():
     df_atual = enrich_df(df_atual)
 
     tabs = st.tabs([
-        # "Visão Geral",
-        # "Perfil do Município",
-        # "Classificação",
+        "Visão Geral",
+        "Perfil do Município",
+        "Classificação",
         "Água vs Esgoto",
         "Perdas e Investimento",
         "Evolução Temporal",
-        "Marco Legal 2033",
+        # "Marco Legal 2033",
         "Agrupamento",
         "Dados",
     ])
 
-    # with tabs[X]:
-    #     render_hero(df_atual, ultimo_ano)
-    #     render_mapa(df_atual, df, geo, ultimo_ano, key_suffix="home")
-
-    # with tabs[X]:
-    #     render_perfil(df, df_atual, geo, ultimo_ano)
-
-    # with tabs[X]:
-    #     render_ranking(df_atual, ultimo_ano)
-
     with tabs[0]:
-        render_gap(df_atual, ultimo_ano)
+        render_hero(df_atual, ultimo_ano)
+        render_mapa(df_atual, df, geo, ultimo_ano, key_suffix="home")
 
-    with tabs[1]:
-        render_perdas(df, df_atual, ultimo_ano)
+    with tabs[1]:   
+        render_perfil(df, df_atual, geo, ultimo_ano)
 
     with tabs[2]:
-        render_evolucao(df, ultimo_ano)
+        render_ranking(df_atual, ultimo_ano)
 
     with tabs[3]:
-        render_marco_legal(df, ultimo_ano)
+        render_gap(df_atual, ultimo_ano)
 
     with tabs[4]:
-        render_clusters(df_atual, geo, ultimo_ano)
+        render_perdas(df, df_atual, ultimo_ano)
 
     with tabs[5]:
+        render_evolucao(df, ultimo_ano)
+
+    # with tabs[X]:
+    #     render_marco_legal(df, ultimo_ano)
+
+    with tabs[3]:
+        render_clusters(df_atual, geo, ultimo_ano)
+
+    with tabs[6]:
         render_dados(df)
 
     render_footer()
